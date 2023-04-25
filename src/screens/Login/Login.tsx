@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import Button from "../../components/common/Button";
+import Input from "../../components/common/Input";
 
 export default function Login() {
   return (
@@ -8,6 +9,8 @@ export default function Login() {
       <View>
         <Text style={styles.textContainer}>Welcome</Text>
       </View>
+      <Input icon="Mail" />
+      <Input icon="User" />
       <Button onPress={() => {}} name="LOGIN" />
     </View>
   );
@@ -18,6 +21,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#2D2D2D",
     flex: 1,
     alignItems: "center",
+    padding: 20,
+    display: "flex",
+    flexDirection: "column",
+    gap: 32,
   },
 
   textContainer: {

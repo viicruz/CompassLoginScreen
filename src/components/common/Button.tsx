@@ -14,12 +14,12 @@ export default function Button(props:Props) {
 
 const styles = StyleSheet.create({
   buttonStyle: {
-    width: 350,
-    height: 60,
+    width: '100%',
+    height: 55,
     backgroundColor: "#D78F3C",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 8,
+    borderRadius: 30,
     
   },
   textPropContainer: {
