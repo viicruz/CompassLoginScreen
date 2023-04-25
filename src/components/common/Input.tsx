@@ -1,16 +1,24 @@
 import { View, TextInput, StyleSheet } from "react-native";
-import UserIcon from "../../assets/icons/UserIcon";
 import IconMail from "../../assets/icons/IconMail";
+import IconLock from "../../assets/icons/IconLock";
 type Props = {
-  icon: "User" | "Mail";
+  icon: "User" | "Mail" | "Lock";
+  secureTextEntry?: boolean;
+  placeholder?: string;
 };
 export default function InputField(props: Props) {
   return (
     <View style={styles.ViewContainer}>
-      {props.icon === "User" && <UserIcon size={24} />}
+      {props.icon === "Lock" && <IconLock size={24} />}
 
       {props.icon === "Mail" && <IconMail size={24} />}
-      <TextInput style={styles.inputContainer} />
+
+      <TextInput
+        placeholderTextColor="#A8A8A8"
+        placeholder={props.placeholder}
+        style={styles.inputContainer}
+        secureTextEntry={props.secureTextEntry}
+      />
     </View>
   );
 }
@@ -31,7 +39,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: "100%",
-    height: 55,
+    height: 40,
     color: "#A8A8A8",
     fontSize: 20,
   },

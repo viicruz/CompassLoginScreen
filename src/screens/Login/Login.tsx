@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
+import Footer from "../../components/common/Footer";
 
 export default function Login() {
   return (
@@ -9,10 +10,12 @@ export default function Login() {
       <View>
         <Text style={styles.textContainer}>Welcome</Text>
       </View>
-      <Input icon="Mail" />
-      <Input icon="User" />
+      <Input icon="Mail" placeholder="Your Email"/>
+      <Input secureTextEntry icon="Lock" placeholder="Your Password" />
       <Button onPress={() => {}} name="LOGIN" />
+      <Footer/>
     </View>
+
   );
 }
 
