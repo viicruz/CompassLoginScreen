@@ -13,7 +13,7 @@ export default function Login() {
       <Input icon="Mail" placeholder="Your Email"/>
       <Input secureTextEntry icon="Lock" placeholder="Your Password" />
       <Button onPress={() => {}} name="LOGIN" />
-      <Footer/>
+      <Footer buttonName="Sign In"/>
     </View>
 
   );

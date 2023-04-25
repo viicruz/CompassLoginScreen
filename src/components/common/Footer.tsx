@@ -1,7 +1,9 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useState } from "react";
 
-type Props = {};
+type Props = {
+    buttonName: string;
+};
 
 export default function Footer(props: Props) {
   const [wasClicked, setWasClicked] = useState<boolean>(false);
@@ -20,7 +22,7 @@ export default function Footer(props: Props) {
             setWasClicked(false);
           }}
         >
-          Sign in
+          {props.buttonName}
         </Text>
       </Text>
     </View>
