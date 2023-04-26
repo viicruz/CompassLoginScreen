@@ -37,6 +37,8 @@ export default function Login() {
         <Text style={styles.textContainer}>Welcome</Text>
       </View>
       <Input
+        isWrong={!isCredentialValid.email}
+        wrongText="Please enter a valid email address"
         onChange={(e) => {
           setUserCredential({
             ...userCredential,
@@ -47,6 +49,8 @@ export default function Login() {
         placeholder="Your Email"
       />
       <Input
+        isWrong={!isCredentialValid.password}
+        wrongText="Please enter a valid password"
         onChange={(e) => {
           setUserCredential({
             ...userCredential,
