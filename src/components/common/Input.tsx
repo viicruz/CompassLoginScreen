@@ -5,6 +5,7 @@ type Props = {
   icon: "User" | "Mail" | "Lock";
   secureTextEntry?: boolean;
   placeholder?: string;
+  onChange: (value: string) => void;
 };
 export default function InputField(props: Props) {
   return (
@@ -18,6 +19,9 @@ export default function InputField(props: Props) {
         placeholder={props.placeholder}
         style={styles.inputContainer}
         secureTextEntry={props.secureTextEntry}
+        onChangeText={(e) => {
+          props.onChange(e);
+        }}
       />
     </View>
   );
