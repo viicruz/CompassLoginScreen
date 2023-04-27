@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, KeyboardAvoidingView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import Button from "../../components/common/Button";
@@ -73,7 +73,9 @@ export default function Login() {
         }}
         name="LOGIN"
       />
-      <Footer buttonName="Sign Up" />
+      <KeyboardAvoidingView style={styles.footerContainer} behavior="height">
+          <Footer buttonName="Sign In" />
+        </KeyboardAvoidingView>
     </View>
   );
 }
@@ -122,4 +124,9 @@ const styles = StyleSheet.create({
     marginTop:80,
     
   },
+
+  footerContainer: {
+    marginTop:148,
+    width:400
+    },
 });

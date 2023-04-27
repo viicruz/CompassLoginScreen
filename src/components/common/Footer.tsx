@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   Container: {
     width: "100%",
     height: 72,
-    position: "absolute",
+    
     left: 0,
     bottom: 0,
     borderTopWidth: 1,

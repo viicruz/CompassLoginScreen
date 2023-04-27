@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, KeyboardAvoidingView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Checkbox } from "expo-checkbox";
 
@@ -10,6 +10,7 @@ import Footer from "../../components/common/Footer";
 type UserCredential = {
   email: string;
   password: string;
+  username: string;
 };
 
 export default function SignUp() {
@@ -19,17 +20,20 @@ export default function SignUp() {
   const [userCredential, setUserCredential] = useState<UserCredential>({
     email: "",
     password: "",
+    username: "",
   });
 
   const [isCredentialValid, setIsCredentialValid] = useState({
     email: false,
     password: false,
+    username: false,
   });
 
   useEffect(() => {
     setIsCredentialValid({
       email: isEmailOk(userCredential.email),
       password: isPasswordOk(userCredential.password),
+      username: isUsernameOk(userCredential.username),
     });
   }, [userCredential]);
 
@@ -59,15 +63,14 @@ export default function SignUp() {
           />
 
           <Input
-            isWrong={!isCredentialValid.password}
+            isWrong={!isCredentialValid.username}
             wrongText="Please enter a valid Username"
             onChange={(e) => {
               setUserCredential({
                 ...userCredential,
-                password: e,
+                username: e,
               });
             }}
-            secureTextEntry
             icon="User"
             placeholder="Username"
           />
@@ -110,13 +113,21 @@ export default function SignUp() {
 
         <Button
           onPress={() => {
-            navigation.navigate("SignUp" as never);
+            navigation.navigate("Home" as never);
           }}
           name="CREATE ACCOUNT"
         />
+         
       </View>
-      <Footer buttonName="Sign In" />
-    </View>
+
+      <KeyboardAvoidingView style={styles.footerContainer} behavior="height">
+          <Footer buttonName="Sign In" />
+        </KeyboardAvoidingView>
+
+      </View>
+      
+       
+    
   );
 }
 
@@ -141,9 +152,15 @@ function isPasswordOk(password: string): boolean {
   return isPassordOk;
 }
 
+function isUsernameOk(username: string): boolean {
+  let isUserOk = true;
+  if (username.length <= 2) isUserOk = false;
+  return isUserOk;
+}
+
 const styles = StyleSheet.create({
   signUpScreen: {
-    position: "relative",
+    
     backgroundColor: "#2D2D2D",
     flex: 1,
     alignItems: "center",
@@ -199,4 +216,10 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 100,
   },
+
+  footerContainer: {
+  width:"100%"
+  },
+
+  
 });
