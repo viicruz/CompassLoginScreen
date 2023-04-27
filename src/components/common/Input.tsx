@@ -1,6 +1,7 @@
 import { View, TextInput, Text, StyleSheet } from "react-native";
 import IconMail from "../../assets/icons/IconMail";
 import IconLock from "../../assets/icons/IconLock";
+import UserIcon from "../../assets/icons/UserIcon";
 type Props = {
   icon: "User" | "Mail" | "Lock";
   secureTextEntry?: boolean;
@@ -11,10 +12,10 @@ type Props = {
 };
 export default function InputField(props: Props) {
   return (
-    <>
+    <View style={styles.wrapper}>
       <View
         style={[
-          styles.ViewContainer,
+          styles.viewContainer,
           {
             borderColor: props.isWrong ? "red" : undefined,
           },
@@ -23,6 +24,8 @@ export default function InputField(props: Props) {
         {props.icon === "Lock" && <IconLock size={24} />}
 
         {props.icon === "Mail" && <IconMail size={24} />}
+
+        {props.icon === "User" && <UserIcon size={24} />}
 
         <TextInput
           placeholderTextColor="#A8A8A8"
@@ -37,14 +40,21 @@ export default function InputField(props: Props) {
       {props.isWrong && (
         <Text style={{ color: "red" }} children={props.wrongText} />
       )}
-    </>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  ViewContainer: {
+  wrapper: {
+    width: "100%",
+    height: 72,
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
+  viewContainer: {
     paddingHorizontal: 24,
-    paddingVertical: 16,
+    height: 55,
     width: "100%",
     borderWidth: 1,
     borderStyle: "solid",

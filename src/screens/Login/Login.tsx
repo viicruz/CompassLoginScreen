@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Text, View, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
 import Footer from "../../components/common/Footer";
@@ -9,6 +11,8 @@ type UserCredential = {
   password: string;
 };
 export default function Login() {
+  const navigation = useNavigation();
+
   const [userCredential, setUserCredential] = useState<UserCredential>({
     email: "",
     password: "",
@@ -36,6 +40,7 @@ export default function Login() {
       <View>
         <Text style={styles.textContainer}>Welcome</Text>
       </View>
+      <View style={styles.inputHolder}>
       <Input
         isWrong={!isCredentialValid.email}
         wrongText="Please enter a valid email address"
@@ -61,8 +66,14 @@ export default function Login() {
         icon="Lock"
         placeholder="Your Password"
       />
-      <Button onPress={() => {}} name="LOGIN" />
-      <Footer buttonName="Sign In" />
+      </View>
+      <Button
+        onPress={() => {
+          navigation.navigate("SignUp" as never);
+        }}
+        name="LOGIN"
+      />
+      <Footer buttonName="Sign Up" />
     </View>
   );
 }
@@ -96,12 +107,19 @@ const styles = StyleSheet.create({
     padding: 20,
     display: "flex",
     flexDirection: "column",
+  },
+
+  inputHolder:{
+    display:'flex',
+    marginTop: 80,
     gap: 32,
+    marginVertical:30,
   },
 
   textContainer: {
     fontSize: 40,
     color: "#D78F3C",
-    marginTop: 100,
+    marginTop:80,
+    
   },
 });

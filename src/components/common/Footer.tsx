@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useState } from "react";
 
 type Props = {
-    buttonName: string;
+  buttonName: string;
 };
 
 export default function Footer(props: Props) {
@@ -15,10 +15,13 @@ export default function Footer(props: Props) {
           onPress={() => {
             setWasClicked(true);
           }}
-          style={[styles.buttonContainer,{
-            color: wasClicked ? '#2f75ed' : '#D78F3C'
-          }]}
-          onPressOut={()=>{
+          style={[
+            styles.buttonContainer,
+            {
+              color: wasClicked ? "#2f75ed" : "#D78F3C",
+            },
+          ]}
+          onPressOut={() => {
             setWasClicked(false);
           }}
         >
@@ -31,7 +34,11 @@ export default function Footer(props: Props) {
 
 const styles = StyleSheet.create({
   Container: {
-    width: 400,
+    width: "100%",
+    height: 72,
+    position: "absolute",
+    left: 0,
+    bottom: 0,
     borderTopWidth: 1,
     borderTopColor: "#D78F3C",
     justifyContent: "center",
@@ -41,7 +48,6 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     color: "#fff",
-    marginTop: 20,
   },
   buttonContainer: {
     fontWeight: "600",
