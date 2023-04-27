@@ -87,10 +87,25 @@ export default function SignUp() {
           />
         </View>
 
-        <View style={styles.CheckBoxContainer}>
-          <Checkbox value={isChecked} onValueChange={setIsChecked} />
+        <View style={styles.checkboxWrapper}>
+          <View style={styles.CheckBoxContainer}>
+            <Checkbox
+              value={isChecked}
+              onValueChange={setIsChecked}
+              style={!isChecked && { borderColor: "#FF4B4B" }}
+            />
 
-          <Text>Agree To Terms And Conditions</Text>
+            <Text style={{ color: "#F5F5F5" }}>
+              Agree To Terms And Conditions
+            </Text>
+          </View>
+
+          {!isChecked && (
+            <Text
+              style={{ color: "#FF4B4B", marginLeft: 16 }}
+              children="Please accept the terms"
+            />
+          )}
         </View>
 
         <Button
@@ -135,7 +150,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
   },
-  
+
   header: {
     width: "100%",
     display: "flex",
@@ -168,10 +183,20 @@ const styles = StyleSheet.create({
   },
   CheckBoxContainer: {
     width: "100%",
-    paddingBottom: 32,
     paddingTop: 16,
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "flex-start",
+    gap: 8,
+  },
+
+  //remove layout shift
+  checkboxWrapper: {
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    flexDirection: "column",
+    width: "100%",
+    height: 100,
   },
 });

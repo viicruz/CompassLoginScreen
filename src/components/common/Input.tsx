@@ -17,7 +17,7 @@ export default function InputField(props: Props) {
         style={[
           styles.viewContainer,
           {
-            borderColor: props.isWrong ? "red" : undefined,
+            borderColor: props.isWrong ? "#FF4B4B" : undefined,
           },
         ]}
       >
@@ -38,7 +38,7 @@ export default function InputField(props: Props) {
         />
       </View>
       {props.isWrong && (
-        <Text style={{ color: "red" }} children={props.wrongText} />
+        <Text style={{ color: "#FF4B4B", marginLeft:16 }} children={props.wrongText} />
       )}
     </View>
   );
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     height: 72,
     display: "flex",
     justifyContent: "flex-start",
-    alignItems: "center",
+    alignItems: "flex-start",
   },
   viewContainer: {
     paddingHorizontal: 24,
