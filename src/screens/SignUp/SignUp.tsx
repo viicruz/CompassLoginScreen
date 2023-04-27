@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Text, View, StyleSheet, KeyboardAvoidingView } from "react-native";
+import { Text, View, StyleSheet} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Checkbox } from "expo-checkbox";
 
@@ -117,17 +117,10 @@ export default function SignUp() {
           }}
           name="CREATE ACCOUNT"
         />
-         
       </View>
 
-      <KeyboardAvoidingView style={styles.footerContainer} behavior="height">
-          <Footer buttonName="Sign In" />
-        </KeyboardAvoidingView>
-
-      </View>
-      
-       
-    
+      <Footer buttonName="Sign In" />
+    </View>
   );
 }
 
@@ -160,12 +153,12 @@ function isUsernameOk(username: string): boolean {
 
 const styles = StyleSheet.create({
   signUpScreen: {
-    
     backgroundColor: "#2D2D2D",
     flex: 1,
     alignItems: "center",
     display: "flex",
     flexDirection: "column",
+    position:"relative"
   },
 
   header: {
@@ -216,10 +209,4 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 100,
   },
-
-  footerContainer: {
-  width:"100%"
-  },
-
-  
 });

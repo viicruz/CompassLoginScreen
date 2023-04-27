@@ -41,31 +41,31 @@ export default function Login() {
         <Text style={styles.textContainer}>Welcome</Text>
       </View>
       <View style={styles.inputHolder}>
-      <Input
-        isWrong={!isCredentialValid.email}
-        wrongText="Please enter a valid email address"
-        onChange={(e) => {
-          setUserCredential({
-            ...userCredential,
-            email: e,
-          });
-        }}
-        icon="Mail"
-        placeholder="Your Email"
-      />
-      <Input
-        isWrong={!isCredentialValid.password}
-        wrongText="Please enter a valid password"
-        onChange={(e) => {
-          setUserCredential({
-            ...userCredential,
-            password: e,
-          });
-        }}
-        secureTextEntry
-        icon="Lock"
-        placeholder="Your Password"
-      />
+        <Input
+          isWrong={!isCredentialValid.email}
+          wrongText="Please enter a valid email address"
+          onChange={(e) => {
+            setUserCredential({
+              ...userCredential,
+              email: e,
+            });
+          }}
+          icon="Mail"
+          placeholder="Your Email"
+        />
+        <Input
+          isWrong={!isCredentialValid.password}
+          wrongText="Please enter a valid password"
+          onChange={(e) => {
+            setUserCredential({
+              ...userCredential,
+              password: e,
+            });
+          }}
+          secureTextEntry
+          icon="Lock"
+          placeholder="Your Password"
+        />
       </View>
       <Button
         onPress={() => {
@@ -73,9 +73,7 @@ export default function Login() {
         }}
         name="LOGIN"
       />
-      <KeyboardAvoidingView style={styles.footerContainer} behavior="height">
-          <Footer buttonName="Sign In" />
-        </KeyboardAvoidingView>
+        <Footer buttonName="Sign In" />
     </View>
   );
 }
@@ -105,28 +103,28 @@ const styles = StyleSheet.create({
   loginScreen: {
     backgroundColor: "#2D2D2D",
     flex: 1,
+    position: "relative",
     alignItems: "center",
-    padding: 20,
     display: "flex",
     flexDirection: "column",
+    
+    
   },
 
-  inputHolder:{
-    display:'flex',
+  inputHolder: {
+    display: "flex",
     marginTop: 80,
     gap: 32,
-    marginVertical:30,
+    marginVertical: 30,
+    padding: 20,
+    
   },
 
   textContainer: {
     fontSize: 40,
     color: "#D78F3C",
-    marginTop:80,
-    
+    marginTop: 80,
   },
 
-  footerContainer: {
-    marginTop:148,
-    width:400
-    },
+
 });
