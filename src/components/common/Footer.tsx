@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, type GestureResponderEvent} from "react-native";
+import { View, Text, StyleSheet,} from "react-native";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import useKeyboardVisible from "../../Hooks/useKeyboardVisible";
@@ -6,6 +6,7 @@ import useKeyboardVisible from "../../Hooks/useKeyboardVisible";
 type Props = {
   buttonName: string;
   goTo: string;
+  textName: string;
 
 };
 
@@ -20,7 +21,7 @@ export default function Footer(props: Props) {
       display: isKeyboardVisible ? 'none' : 'flex'
     }]} >
       <Text style={styles.textContainer}>
-        {" Don't have an account? "}
+      {props.textName}
         <Text
           onPress={() => {
             setWasClicked(true);
@@ -38,6 +39,7 @@ export default function Footer(props: Props) {
            
           }}
         >
+          
           {props.buttonName}
         </Text>
       </Text>

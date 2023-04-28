@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import { Text, View, StyleSheet, KeyboardAvoidingView } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import KeyboardVisible from "../../Hooks/useKeyboardVisible"
 
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
 import Footer from "../../components/common/Footer";
-
 
 type UserCredential = {
   email: string;
@@ -15,7 +13,6 @@ type UserCredential = {
 export default function Login() {
   const navigation = useNavigation();
 
-  
   const [userCredential, setUserCredential] = useState<UserCredential>({
     email: "",
     password: "",
@@ -45,6 +42,7 @@ export default function Login() {
       </View>
       <View style={styles.inputHolder}>
         <Input
+          //Must contain "@, ." and minimum of 5 characters.
           isWrong={!isCredentialValid.email}
           wrongText="Please enter a valid email address"
           onChange={(e) => {
@@ -57,6 +55,7 @@ export default function Login() {
           placeholder="Your Email"
         />
         <Input
+          //Minimum 6 characters and 1 letter.
           isWrong={!isCredentialValid.password}
           wrongText="Please enter a valid password"
           onChange={(e) => {
@@ -72,11 +71,17 @@ export default function Login() {
       </View>
       <Button
         onPress={() => {
-          navigation.navigate("SignUp" as never);
+          if (isCredentialValid.email && isCredentialValid.password) 
+            navigation.navigate("Home" as never);
+          
         }}
         name="LOGIN"
       />
-        <Footer goTo="SignUp" buttonName="Sign Up" />
+      <Footer
+        goTo="SignUp"
+        textName="Don't have an account? "
+        buttonName="Sign Up"
+      />
     </View>
   );
 }
@@ -110,8 +115,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     display: "flex",
     flexDirection: "column",
-    
-    
   },
 
   inputHolder: {
@@ -120,7 +123,6 @@ const styles = StyleSheet.create({
     gap: 32,
     marginVertical: 30,
     padding: 20,
-    
   },
 
   textContainer: {
@@ -128,6 +130,4 @@ const styles = StyleSheet.create({
     color: "#D78F3C",
     marginTop: 80,
   },
-
-
 });

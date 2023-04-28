@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Text, View, StyleSheet} from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Checkbox } from "expo-checkbox";
 
@@ -50,6 +50,7 @@ export default function SignUp() {
       <View style={styles.signUpForm}>
         <View style={styles.inputHolder}>
           <Input
+            //Must contain "@, ." and minimum of 5 characters.
             isWrong={!isCredentialValid.email}
             wrongText="Please enter a valid email address"
             onChange={(e) => {
@@ -63,6 +64,7 @@ export default function SignUp() {
           />
 
           <Input
+            //Minimum 3 characters.
             isWrong={!isCredentialValid.username}
             wrongText="Please enter a valid Username"
             onChange={(e) => {
@@ -76,6 +78,7 @@ export default function SignUp() {
           />
 
           <Input
+            //Minimum 6 characters and 1 letter.
             isWrong={!isCredentialValid.password}
             wrongText="Please enter a valid password"
             onChange={(e) => {
@@ -113,13 +116,23 @@ export default function SignUp() {
 
         <Button
           onPress={() => {
-            navigation.navigate("Home" as never);
+            if (
+              isCredentialValid.email &&
+              isCredentialValid.password &&
+              isCredentialValid.username &&
+              isChecked
+            )
+              navigation.navigate("Home" as never);
           }}
           name="CREATE ACCOUNT"
         />
       </View>
 
-      <Footer goTo="Login" buttonName="Sign In" />
+      <Footer
+        textName="Already have an account? "
+        goTo="Login"
+        buttonName="Sign In"
+      />
     </View>
   );
 }
@@ -158,7 +171,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     display: "flex",
     flexDirection: "column",
-    position:"relative"
+    position: "relative",
   },
 
   header: {
