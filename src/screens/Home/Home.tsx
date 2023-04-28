@@ -12,8 +12,8 @@ export default function Home() {
         <FlatList
           data={List}
           numColumns={2}
-          ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
-          keyExtractor={(fruta, index) => {
+          ItemSeparatorComponent={() => <View style={{ height: 10  }} />}
+          keyExtractor={(list, index) => {
             return index + "";
           }}
           renderItem={(list) => {
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
   flatListContainer: {
     width: "100%",
     height: "100%",
+    flex:1
    
     
   },
