@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Text, View, StyleSheet, KeyboardAvoidingView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import KeyboardVisible from "../../Hooks/useKeyboardVisible"
 
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
 import Footer from "../../components/common/Footer";
+
 
 type UserCredential = {
   email: string;
@@ -13,6 +15,7 @@ type UserCredential = {
 export default function Login() {
   const navigation = useNavigation();
 
+  
   const [userCredential, setUserCredential] = useState<UserCredential>({
     email: "",
     password: "",
@@ -73,7 +76,7 @@ export default function Login() {
         }}
         name="LOGIN"
       />
-        <Footer buttonName="Sign In" />
+        <Footer goTo="SignUp" buttonName="Sign Up" />
     </View>
   );
 }

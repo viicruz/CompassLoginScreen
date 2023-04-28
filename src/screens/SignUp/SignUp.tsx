@@ -119,7 +119,7 @@ export default function SignUp() {
         />
       </View>
 
-      <Footer buttonName="Sign In" />
+      <Footer goTo="Login" buttonName="Sign In" />
     </View>
   );
 }
