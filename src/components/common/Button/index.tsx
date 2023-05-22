@@ -1,4 +1,7 @@
 import { Text,StyleSheet, Pressable, type GestureResponderEvent} from "react-native";
+
+import { styles } from "./styles";
+
 type Props = {
   onPress: (event: GestureResponderEvent) => void
   name : string
@@ -11,18 +14,3 @@ export default function Button(props:Props) {
     </Pressable>
   );
 }
-
-const styles = StyleSheet.create({
-  buttonStyle: {
-    width: '100%',
-    height: 55,
-    backgroundColor: "#D78F3C",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 30,
-  },
-  textPropContainer: {
-    color:'#fff',
-    
-  }
-});

@@ -1,7 +1,9 @@
-import { View, Text, StyleSheet,} from "react-native";
+import { View, Text } from "react-native";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import useKeyboardVisible from "../../Hooks/useKeyboardVisible";
+import useKeyboardVisible from "../../../Hooks/useKeyboardVisible";
+
+import { styles } from "./styles";
 
 type Props = {
   buttonName: string;
@@ -46,24 +48,3 @@ export default function Footer(props: Props) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  Container: {
-    width: "100%",
-    height: 72,
-    position:"absolute",
-    bottom:36,
-    left: 0,
-    borderTopWidth: 1,
-    borderTopColor: "#D78F3C",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-  },
-  textContainer: {
-    color: "#fff",
-  },
-  buttonContainer: {
-    fontWeight: "600",
-  },
-});

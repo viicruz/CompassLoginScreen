@@ -7,9 +7,9 @@ import { View, Text, TouchableOpacity } from "react-native";
 
 import Arrow from "../../assets/icons/Arrow";
 
-import Login from "../../screens/Login/Login";
-import SignUp from "../../screens/SignUp/SignUp";
-import Home from "../../screens/Home/Home";
+import Login from "../../screens/Login";
+import SignUp from "../../screens/SignUp";
+import Home from "../../screens/Home";
 
 const Stack = createNativeStackNavigator();
 const configuration: NativeStackNavigationOptions = {
