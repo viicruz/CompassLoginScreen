@@ -38,7 +38,7 @@ export default function Footer(props: Props) {
           onPressOut={() => {
             setWasClicked(false);
            
-           
+
           }}
         >
           
