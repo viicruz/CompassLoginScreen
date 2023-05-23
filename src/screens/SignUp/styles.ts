@@ -1,61 +1,52 @@
 import { StyleSheet } from "react-native";
+import { colors } from "../../constants/theme";
 
 export const styles = StyleSheet.create({
     signUpScreen: {
-      backgroundColor: "#2D2D2D",
+      backgroundColor: colors.background,
       flex: 1,
       alignItems: "center",
-      display: "flex",
-      flexDirection: "column",
-      position: "relative",
-    },
-  
-    header: {
-      width: "100%",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      paddingTop: 80,
-      paddingBottom: 40,
     },
   
     signUpForm: {
+      marginTop: '15%',
       width: "100%",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      padding: 20,
+      height: 230,
+      justifyContent: 'space-between',
+      paddingHorizontal: 20,
+    },
+
+    areaTerms: {
+      flexDirection: "row",
+      gap: 5,      
     },
   
     inputHolder: {
-      width: "100%",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      gap: 30,
+      gap: 7,
     },
-  
-    textContainer: {
-      fontSize: 40,
-      color: "#D78F3C",
-    },
+
     CheckBoxContainer: {
-      width: "100%",
+      marginLeft: 5,
       paddingTop: 16,
       flexDirection: "row",
-      justifyContent: "flex-start",
-      alignItems: "flex-start",
       gap: 8,
     },
-  
+    
+    textTerms: {
+      color: colors.light,
+      textDecorationLine: "underline",
+    },
+
+    textError: {
+      color: colors.warning,
+      marginLeft: 16
+    },
+    
     //remove layout shift
-    checkboxWrapper: {
-      display: "flex",
-      justifyContent: "flex-start",
-      alignItems: "flex-start",
+    checkboxWrapper: {      
+      marginBottom: 12,
+      justifyContent: "center",
       flexDirection: "column",
       width: "100%",
-      height: 100,
     },
   });

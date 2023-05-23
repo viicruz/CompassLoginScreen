@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Text, View } from "react-native";
+import { Text, Touchable, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Checkbox } from "expo-checkbox";
 
@@ -8,6 +8,8 @@ import Input from "../../components/common/Input";
 import Footer from "../../components/common/Footer";
 
 import { styles } from "./styles";
+import Title from "../../components/common/Title";
+import { colors } from "../../constants/theme";
 
 type UserCredential = {
   email: string;
@@ -46,9 +48,7 @@ export default function SignUp() {
 
   return (
     <View style={styles.signUpScreen}>
-      <View style={styles.header}>
-        <Text style={styles.textContainer}>Sign Up</Text>
-      </View>
+      <Title title="Sign Up" />
       <View style={styles.signUpForm}>
         <View style={styles.inputHolder}>
           <Input
@@ -103,14 +103,21 @@ export default function SignUp() {
               style={!isChecked && { borderColor: "#FF4B4B" }}
             />
 
-            <Text style={{ color: "#F5F5F5" }}>
-              Agree To Terms And Conditions
-            </Text>
+            <View style={styles.areaTerms}>
+              <Text style={{color: '#f5f5f5'}}>
+                Agree To
+              </Text>
+              <TouchableOpacity>
+                <Text style={styles.textTerms}>
+                  Terms And Conditions
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
 
           {!isChecked && (
             <Text
-              style={{ color: "#FF4B4B", marginLeft: 16 }}
+              style={{ color: "#FF4B4B", marginLeft: 26 }}
               children="Please accept the terms"
             />
           )}
@@ -126,7 +133,7 @@ export default function SignUp() {
             )
               navigation.navigate("Home" as never);
           }}
-          name="CREATE ACCOUNT"
+          name="create account"
         />
       </View>
 

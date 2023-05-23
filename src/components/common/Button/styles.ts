@@ -1,17 +1,19 @@
 import { StyleSheet} from "react-native";
+import { colors, fontsize } from "../../../constants/theme";
 
 export const styles = StyleSheet.create({
     buttonStyle: {
-      width: '100%',
-      height: 55,
-      backgroundColor: "#D78F3C",
-      alignItems: "center",
-      justifyContent: "center",
+      backgroundColor: colors.primary,
       borderRadius: 30,
+      height: 55,
+      justifyContent: "center",
+      alignItems: "center",
     },
+    
     textPropContainer: {
-      color:'#fff',
-      
+      textTransform: 'uppercase',
+      fontSize: fontsize.textButton,
+      color:colors.light,
     }
   });
   
