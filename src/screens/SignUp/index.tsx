@@ -104,13 +104,9 @@ export default function SignUp() {
             />
 
             <View style={styles.areaTerms}>
-              <Text style={{color: '#f5f5f5'}}>
-                Agree To
-              </Text>
+              <Text style={{ color: "#f5f5f5" }}>Agree To</Text>
               <TouchableOpacity>
-                <Text style={styles.textTerms}>
-                  Terms And Conditions
-                </Text>
+                <Text style={styles.textTerms}>Terms And Conditions</Text>
               </TouchableOpacity>
             </View>
           </View>

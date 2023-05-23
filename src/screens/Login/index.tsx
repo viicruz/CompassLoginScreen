@@ -79,6 +79,15 @@ export default function Login() {
           }}
           name="login"
         />
+
+        <Button
+          onPress={() => {
+            navigation.navigate("ShoppingCart" as never);
+            
+          }}
+          name="ShoppingCart"
+        />
+        
       </View>
       <Footer
         goTo="SignUp"
