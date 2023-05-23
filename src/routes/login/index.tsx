@@ -10,6 +10,7 @@ import Arrow from "../../assets/icons/Arrow";
 import Login from "../../screens/Login";
 import SignUp from "../../screens/SignUp";
 import Home from "../../screens/Home";
+import { ProductDataContext } from "../../contexts/ProductProvider";
 
 const Stack = createNativeStackNavigator();
 const configuration: NativeStackNavigationOptions = {
