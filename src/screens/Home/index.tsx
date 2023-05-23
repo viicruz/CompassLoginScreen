@@ -6,11 +6,10 @@ import {
   ListRenderItemInfo,
 } from "react-native";
 
-import Card from "../../components/specific/Card";
 
 import { styles } from "./styles";
 import { ProductCard } from "../../components/productCard/ProductCard";
-import { produtcPropType } from "../../types/types";
+import { productPropType } from "../../types/types";
 import { useContext } from "react";
 import { ProductDataContext } from "../../contexts/ProductProvider";
 
@@ -18,7 +17,7 @@ type Props = {};
 
 export default function Home() {
   const { apiData } = useContext(ProductDataContext);
-  const itemRenderer = ({ item }: ListRenderItemInfo<produtcPropType>) => {
+  const itemRenderer = ({ item }: ListRenderItemInfo<productPropType>) => {
     return (
       <ProductCard
         title={item.title}

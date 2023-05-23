@@ -1,8 +1,9 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
-import { ProductType, produtcPropType } from "../../types/types";
+import { ProductType, productPropType } from "../../types/types";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { EventHandler, useContext } from "react";
 import { ProductDataContext } from "../../contexts/ProductProvider";
+import { colors } from "../../constants/theme";
 
 export const ProductCard = ({
   title,
@@ -10,7 +11,7 @@ export const ProductCard = ({
   favorited,
   image,
   id,
-}: produtcPropType) => {
+}: productPropType) => {
   const favoriteHandler = (id: number, currentSatte: boolean) => {
     updateProduct(id, favorited);
   };
@@ -18,7 +19,7 @@ export const ProductCard = ({
   return (
     <View style={style.wrap}>
       <View>
-        <Text style={style.itemTitile}>{title}</Text>
+        <Text style={style.itemTitle}>{title}</Text>
       </View>
 
       <View>
@@ -33,8 +34,8 @@ export const ProductCard = ({
         <Ionicons
           onPress={() => favoriteHandler(id, favorited)}
           name="heart"
-          size={33}
-          color={favorited ? "red" : "gray"}
+          size={27}
+          color={favorited ? colors.primary : colors.light}
         />
       </View>
     </View>
@@ -43,19 +44,23 @@ export const ProductCard = ({
 
 const style = StyleSheet.create({
   wrap: {
-    backgroundColor: "white",
-    padding: 5,
-    flex: 1,
-    height: 200,
+    width: 186,
+    height: 226,
+    borderRadius: 10,
+    backgroundColor: colors.cardProduct,
     marginHorizontal: 5,
+    padding: 5,
     alignItems: "center",
+    justifyContent: 'space-around',
   },
 
-  itemTitile: {
+  itemTitle: {
+    color: colors.light,
     fontWeight: "bold",
     fontSize: 12,
     textAlign: "center",
   },
+
   itemImage: {
     height: 122,
     width: 122,
@@ -64,19 +69,26 @@ const style = StyleSheet.create({
 
   itemPriceWrap: {
     flexDirection: "row",
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: '100%'
   },
+
   itemPrice: {
-    alignSelf: "flex-start",
     marginVertical: 5,
-    width: 100,
+    width: 109,
+    height: 30,
+    justifyContent: 'center',
     paddingVertical: 3,
-    backgroundColor: "black",
+    backgroundColor: colors.cardPrice,
     borderRadius: 8,
     padding: 5,
   },
 
   itemPriceText: {
-    color: "white",
+    color: colors.primary,
+    fontSize: 14,
+    fontWeight: 'bold',
     textAlign: "center",
   },
 });

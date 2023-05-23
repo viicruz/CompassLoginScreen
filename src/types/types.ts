@@ -12,7 +12,7 @@ export interface ProductType {
   favorited: boolean;
 }
 
-export type produtcPropType = {
+export type productPropType = {
   title: string;
   price: number;
   favorited: boolean;
