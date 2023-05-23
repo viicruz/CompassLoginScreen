@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, FlatList } from "react-native";
 
-import Card from "../../components/specific/Card";
+import Card from "./components/Card"
 
 import { styles } from "./styles";
 
