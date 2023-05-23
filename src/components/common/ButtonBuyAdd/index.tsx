@@ -4,11 +4,15 @@ import { styles } from "./styles";
 
 type Props = {
     label: string
+    onPress: () => void
 }
 
-export default function ButtonBuyAdd({label,}: Props) {
+export default function ButtonBuyAdd({label, onPress}: Props) {
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity 
+            style={styles.container} 
+            onPress={onPress}
+        >
             <Text style={styles.label}>{label}</Text>
         </TouchableOpacity>
     )
