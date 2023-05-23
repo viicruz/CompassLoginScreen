@@ -10,6 +10,8 @@ import Arrow from "../../assets/icons/Arrow";
 import Login from "../../screens/Login";
 import SignUp from "../../screens/SignUp";
 import Home from "../../screens/Home";
+import ShoppingCart from "../../screens/ShoppingCart";
+
 
 const Stack = createNativeStackNavigator();
 const configuration: NativeStackNavigationOptions = {
@@ -23,6 +25,7 @@ export default function loginNavigation() {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="ShoppingCart" component={ShoppingCart} />
     </Stack.Navigator>
   );
 }

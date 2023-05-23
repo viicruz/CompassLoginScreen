@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, FlatList } from "react-native";
 
-import Card from "../../components/specific/Card";
+import Card from "./components/Card";
 
 import { styles } from "./styles";
 
@@ -13,7 +13,7 @@ export default function Home() {
         <Text style={styles.HomeTitle}>Home</Text>
       </View>
       <View style={styles.flatListContainer}>
-        <FlatList
+        { <FlatList
           data={List}
           numColumns={2}
           ItemSeparatorComponent={() => <View style={{ height: 10  }} />}
@@ -23,7 +23,7 @@ export default function Home() {
           renderItem={(list) => {
             return <Card/>;
           }}
-        />
+        /> }
       </View>
     </View>
   );
