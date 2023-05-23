@@ -22,7 +22,8 @@ warning: '#FF4B4B',
 input: '#656262',
 inputPlaceholder: '#A8A8A8',
 buyAdd: '#20BE4C',
-cardProduct:'#3C3C3E'
+cardProduct:'#3C3C3E',
+white: '#ffff'
     
 };
     
