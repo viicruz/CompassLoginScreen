@@ -10,6 +10,7 @@ import { createBottomTabNavigator, type BottomTabNavigationOptions } from "@reac
 
 import Arrow from "../../assets/icons/Arrow";
 
+import { colors } from "../../constants/theme";
 import Login from "../../screens/Login";
 import SignUp from "../../screens/SignUp";
 import Home from "../../screens/Home";
@@ -24,6 +25,7 @@ const configuration: NativeStackNavigationOptions = {
 
 const bottomTabConfigurations : BottomTabNavigationOptions ={
   headerShown: false,
+  tabBarActiveBackgroundColor:colors.tabBarNavigator,
 
   
 }
