@@ -11,7 +11,6 @@ export const fontsize = {
     textCart: 14,
     textDescription: 11,
     textTotal: 32,
-
 };
 
 export const colors = {
@@ -22,8 +21,12 @@ export const colors = {
     input: '#656262',
     inputPlaceholder: '#A8A8A8',
     buyAdd: '#20BE4C',
-    cardProduct: '#3C3C3E'
-
+    cardProduct: '#FFFFFF',
+    tabBarNavigator:'#2D2D2D',
+    cardPrice: '#282729',
+    navBar: '#2d2d2d',
+    textScreen: '#D9D9D9',
+    textDescription: '#D4D4D4',
 };
 
 

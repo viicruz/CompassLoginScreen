@@ -1,7 +1,8 @@
-import { View, Text } from "react-native";
 import { useState } from "react";
+import { View, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import useKeyboardVisible from "../../../Hooks/useKeyboardVisible";
+
+import useKeyboardVisible from "../../Hooks/useKeyboardVisible";
 
 import { styles } from "./styles";
 
@@ -9,7 +10,6 @@ type Props = {
   buttonName: string;
   goTo: string;
   textName: string;
-
 };
 
 export default function Footer(props: Props) {
@@ -17,13 +17,13 @@ export default function Footer(props: Props) {
   const navigation = useNavigation();
   const isKeyboardVisible = useKeyboardVisible();
 
-  
+
   return (
-    <View style={[styles.Container, {
+    <View style={[styles.container, {
       display: isKeyboardVisible ? 'none' : 'flex'
     }]} >
       <Text style={styles.textContainer}>
-      {props.textName}
+        {props.textName}
         <Text
           onPress={() => {
             setWasClicked(true);
@@ -37,11 +37,9 @@ export default function Footer(props: Props) {
           ]}
           onPressOut={() => {
             setWasClicked(false);
-           
 
           }}
         >
-          
           {props.buttonName}
         </Text>
       </Text>

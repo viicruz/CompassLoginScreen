@@ -1,44 +1,37 @@
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { useContext } from "react";
+import { View, FlatList, ListRenderItemInfo, } from "react-native";
 
-import Card from "../../components/specific/Card";
-
+import { ProductCard } from "../../components/ProductCard";
+import { ProductDataContext } from "../../contexts/ProductProvider";
+import { productPropType } from "../../types/types";
 import { styles } from "./styles";
 
-type Props = {};
-
 export default function Home() {
+  const { apiData } = useContext(ProductDataContext);
+  const itemRenderer = ({ item }: ListRenderItemInfo<productPropType>) => {
+    return (
+      <ProductCard
+        title={item.title}
+        favorited={item.favorited}
+        image={item.image}
+        price={item.price}
+        id={item.id}
+      />
+    );
+  };
   return (
-    <View style={styles.Container}>
+    <View style={styles.container}>
       <View>
-        <Text style={styles.HomeTitle}>Home</Text>
-      </View>
-      <View style={styles.flatListContainer}>
         <FlatList
-          data={List}
+          data={apiData}
           numColumns={2}
-          ItemSeparatorComponent={() => <View style={{ height: 10  }} />}
-          keyExtractor={(list, index) => {
-            return index + "";
+          ItemSeparatorComponent={() => <View style={{ height: 10, gap: 5 }} />}
+          keyExtractor={(item) => {
+            return item.id + "aa";
           }}
-          renderItem={(list) => {
-            return <Card/>;
-          }}
-        />
+          renderItem={itemRenderer}
+        ></FlatList>
       </View>
     </View>
   );
 }
-
-const List = [
-  { item: "item1" },
-  { item: "item2" },
-  { item: "item3" },
-  { item: "item4" },
-  { item: "item5" },
-  { item: "item6" },
-  { item: "item7" },
-  { item: "item8" },
-  { item: "item9" },
-  { item: "item10" },
-];
-

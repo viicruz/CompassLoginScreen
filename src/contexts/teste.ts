@@ -1,0 +1,108 @@
+export const fakeData = [
+  {
+    id: 1,
+    title: "Example Product 1",
+    price: 10.99,
+    description: "This is the description for Example Product 1.",
+    category: "Electronics",
+    image: "https://picsum.photos/200/300?random=1",
+    rating: {
+      rate: "4.5",
+      count: "100",
+    },
+    favorited: true,
+  },
+  {
+    id: 2,
+    title: "Example Product 2",
+    price: 19.99,
+    description: "This is the description for Example Product 2.",
+    category: "Home & Kitchen",
+    image: "https://picsum.photos/200/300?random=2",
+    rating: {
+      rate: "3.8",
+      count: "50",
+    },
+    favorited: false,
+  },
+  {
+    id: 3,
+    title: "Example Product 3",
+    price: 7.5,
+    description: "This is the description for Example Product 3.",
+    category: "Fashion",
+    image: "https://picsum.photos/200/300?random=3",
+    rating: {
+      rate: "4.2",
+      count: "80",
+    },
+    favorited: false,
+  },
+  {
+    id: 4,
+    title: "Example Product 4",
+    price: 14.95,
+    description: "This is the description for Example Product 4.",
+    category: "Sports & Outdoors",
+    image: "https://picsum.photos/200/300?random=4",
+    rating: {
+      rate: "4.7",
+      count: "120",
+    },
+    favorited: true,
+  },
+
+  {
+    id: 5,
+    title: "Example Product 2",
+    price: 19.99,
+    description: "This is the description for Example Product 2.",
+    category: "Home & Kitchen",
+    image: "https://picsum.photos/200/300?random=5",
+    rating: {
+      rate: "3.8",
+      count: "50",
+    },
+    favorited: false,
+  },
+  {
+    id: 6,
+    title: "Example Product 3",
+    price: 7.5,
+    description: "This is the description for Example Product 3.",
+    category: "Fashion",
+    image: "https://picsum.photos/200/300?random=6",
+    rating: {
+      rate: "4.2",
+      count: "80",
+    },
+    favorited: true,
+  },
+  {
+    id: 7,
+    title: "Example Product 4",
+    price: 14.95,
+    description: "This is the description for Example Product 4.",
+    category: "Sports & Outdoors",
+    image: "https://picsum.photos/200/300?random=7",
+    rating: {
+      rate: "4.7",
+      count: "120",
+    },
+    favorited: false,
+  },
+
+  {
+    id: 8,
+    title: "Example Product 4",
+    price: 14.95,
+    description: "This is the description for Example Product 4.",
+    category: "Sports & Outdoors",
+    image: "https://picsum.photos/200/300?random=8",
+    rating: {
+      rate: "4.7",
+      count: "120",
+    },
+    favorited: true,
+  },
+];
