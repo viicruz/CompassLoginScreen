@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
         
     },
     containerArea: {
-        display: "none",
+        // display: "none",
         marginVertical: 150,   
     },
     warning: {
