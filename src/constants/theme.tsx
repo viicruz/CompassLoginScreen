@@ -22,6 +22,7 @@ export const colors = {
     inputPlaceholder: '#A8A8A8',
     buyAdd: '#20BE4C',
     cardProduct: '#3C3C3E',
+    tabBarNavigator:'#2D2D2D',
     cardPrice: '#282729',
     navBar: '#2d2d2d',
     textScreen: '#D9D9D9',

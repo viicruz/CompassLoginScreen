@@ -79,6 +79,15 @@ export default function Login() {
           }}
           name="login"
         />
+
+        <Button
+          onPress={() => {
+            navigation.navigate("Home" as never);
+            
+          }}
+          name="Home"
+        />
+        
       </View>
       <Footer
         goTo="SignUp"

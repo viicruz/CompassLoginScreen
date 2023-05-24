@@ -6,14 +6,13 @@ import {
   ListRenderItemInfo,
 } from "react-native";
 
+import Card from "./components/Card";
 
 import { styles } from "./styles";
 import { ProductCard } from "../../components/productCard/ProductCard";
 import { productPropType } from "../../types/types";
 import { useContext } from "react";
 import { ProductDataContext } from "../../contexts/ProductProvider";
-
-type Props = {};
 
 export default function Home() {
   const { apiData } = useContext(ProductDataContext);
@@ -34,7 +33,7 @@ export default function Home() {
         <Text style={styles.HomeTitle}>Home</Text>
       </View>
       <View style={styles.flatListContainer}>
-        <FlatList
+         <FlatList
           data={List}
           numColumns={2}
           ItemSeparatorComponent={() => <View style={{ height: 10  }} />}
@@ -46,17 +45,6 @@ export default function Home() {
           }}
         />
       </View> */}
-      <View style={styles.flatListContainer}>
-        <FlatList
-          data={apiData}
-          numColumns={2}
-          ItemSeparatorComponent={() => <View style={{ height: 10, gap: 5 }} />}
-          keyExtractor={(item) => {
-            return item.id + "aa";
-          }}
-          renderItem={itemRenderer}
-        ></FlatList>
-      </View>
     </View>
   );
 }
