@@ -1,10 +1,10 @@
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, FlatList } from "react-native";
 
 import Card from "./components/Card"
 
 import { styles } from "./styles";
 
-type Props = {};
+
 
 export default function Home() {
   return (
