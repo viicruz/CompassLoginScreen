@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  TouchablesContainer: {
+  touchablesContainer: {
     width: "50%",
     height: "100%",
     display: "flex",
@@ -17,6 +17,17 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     paddingRight: 41,
   },
+
+  viewContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  textContainer: {
+    color: "white",
+  },
 });
+
 
 export default styles;
