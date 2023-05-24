@@ -1,15 +1,37 @@
-import { View, Text, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  ListRenderItemInfo,
+} from "react-native";
 
-import Card from "./components/Card"
+import Card from "./components/Card";
 
 import { styles } from "./styles";
+import { ProductCard } from "../../components/productCard/ProductCard";
+import { productPropType } from "../../types/types";
+import { useContext } from "react";
+import { ProductDataContext } from "../../contexts/ProductProvider";
 
 
 
 export default function Home() {
+  const { apiData } = useContext(ProductDataContext);
+  const itemRenderer = ({ item }: ListRenderItemInfo<productPropType>) => {
+    return (
+      <ProductCard
+        title={item.title}
+        favorited={item.favorited}
+        image={item.image}
+        price={item.price}
+        id={item.id}
+      />
+    );
+  };
   return (
     <View style={styles.Container}>
-      <View>
+      {/* <View>
         <Text style={styles.HomeTitle}>Home</Text>
       </View>
       <View style={styles.flatListContainer}>
@@ -23,22 +45,8 @@ export default function Home() {
           renderItem={(list) => {
             return <Card/>;
           }}
-        /> }
+        />
       </View>
     </View>
   );
 }
-
-const List = [
-  { item: "item1" },
-  { item: "item2" },
-  { item: "item3" },
-  { item: "item4" },
-  { item: "item5" },
-  { item: "item6" },
-  { item: "item7" },
-  { item: "item8" },
-  { item: "item9" },
-  { item: "item10" },
-];
-
