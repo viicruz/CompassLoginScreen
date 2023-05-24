@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
 
     label: {
         textTransform: 'uppercase',
+        fontWeight: '500',
         color: colors.light,
     }
 })
