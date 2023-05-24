@@ -14,8 +14,6 @@ import { productPropType } from "../../types/types";
 import { useContext } from "react";
 import { ProductDataContext } from "../../contexts/ProductProvider";
 
-
-
 export default function Home() {
   const { apiData } = useContext(ProductDataContext);
   const itemRenderer = ({ item }: ListRenderItemInfo<productPropType>) => {
@@ -35,7 +33,7 @@ export default function Home() {
         <Text style={styles.HomeTitle}>Home</Text>
       </View>
       <View style={styles.flatListContainer}>
-        { <FlatList
+         <FlatList
           data={List}
           numColumns={2}
           ItemSeparatorComponent={() => <View style={{ height: 10  }} />}
@@ -46,7 +44,7 @@ export default function Home() {
             return <Card/>;
           }}
         />
-      </View>
+      </View> */}
     </View>
   );
 }
