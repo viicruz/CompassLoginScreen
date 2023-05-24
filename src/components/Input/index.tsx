@@ -1,9 +1,10 @@
 import { View, TextInput, Text } from "react-native";
-import IconMail from "../../../assets/icons/IconMail";
-import IconLock from "../../../assets/icons/IconLock";
-import UserIcon from "../../../assets/icons/UserIcon";
+import IconMail from "../../assets/icons/IconMail";
+import IconLock from "../../assets/icons/IconLock";
+import UserIcon from "../../assets/icons/UserIcon";
 
 import { styles } from "./styles";
+import { colors } from "../../constants/theme";
 
 type Props = {
   icon: "User" | "Mail" | "Lock";
@@ -20,7 +21,7 @@ export default function InputField(props: Props) {
         style={[
           styles.viewContainer,
           {
-            borderColor: props.isWrong ? "#FF4B4B" : undefined,
+            borderColor: props.isWrong ? colors.warning : undefined,
           },
         ]}
       >
@@ -31,7 +32,7 @@ export default function InputField(props: Props) {
         {props.icon === "User" && <UserIcon size={24} />}
 
         <TextInput
-          placeholderTextColor="#A8A8A8"
+          placeholderTextColor={colors.inputPlaceholder}
           placeholder={props.placeholder}
           style={styles.inputContainer}
           secureTextEntry={props.secureTextEntry}
@@ -41,7 +42,7 @@ export default function InputField(props: Props) {
         />
       </View>
       {props.isWrong && (
-        <Text style={{ color: "#FF4B4B", marginLeft:16 }} children={props.wrongText} />
+        <Text style={{ color: colors.warning, marginLeft: 16 }} children={props.wrongText} />
       )}
     </View>
   );

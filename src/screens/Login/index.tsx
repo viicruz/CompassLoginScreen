@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import {  View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import Button from "../../components/common/Button";
-import Input from "../../components/common/Input";
-import Footer from "../../components/common/Footer";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
+import Footer from "../../components/Footer";
 
 import { styles } from "./styles";
-import Title from "../../components/common/Title";
+import Title from "../../components/Title";
 
 type UserCredential = {
   email: string;
@@ -33,10 +33,10 @@ export default function Login() {
     });
   }, [userCredential]);
 
-  //!debug
-  useEffect(() => {
-    console.log(isCredentialValid);
-  }, [isCredentialValid]);
+  // //!debug
+  // useEffect(() => {
+  //   console.log(isCredentialValid);
+  // }, [isCredentialValid]);
 
   return (
     <View style={styles.container}>

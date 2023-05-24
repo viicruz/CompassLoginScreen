@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { colors } from "../../../constants/theme";
+import { colors } from "../../constants/theme";
 
 
 export const styles = StyleSheet.create({
@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
 
     label: {
         textTransform: 'uppercase',
+        fontWeight: '500',
         color: colors.light,
     }
 })

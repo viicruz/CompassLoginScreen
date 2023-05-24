@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { colors, fontsize } from "../../../constants/theme";
+import { colors, fontsize } from "../../constants/theme";
 
 export const styles = StyleSheet.create({
     container: {
@@ -53,12 +53,12 @@ export const styles = StyleSheet.create({
         paddingVertical: 30,
         paddingHorizontal: 20,
     },
-    
+
     buttonClose: {
         left: 200,
         bottom: 0,
     },
-    
+
 
     // Para testar mostrar o modal - depois pode apagar
     openModal: {
@@ -77,11 +77,11 @@ export const styles = StyleSheet.create({
         borderRadius: 5,
         bottom: 550
     },
-      textStyle: {
+    textStyle: {
         color: 'white',
         fontWeight: 'bold',
         textAlign: 'center',
-      },
+    },
 })
 
 

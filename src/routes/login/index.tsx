@@ -18,7 +18,7 @@ import SignUp from "../../screens/SignUp";
 import Home from "../../screens/Home";
 import ShoppingCart from "../../screens/ShoppingCart";
 import { ProductDataContext } from "../../contexts/ProductProvider";
-import TabBar from "../../components/common/TabBar";
+import TabBar from "../../components/TabBar";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
