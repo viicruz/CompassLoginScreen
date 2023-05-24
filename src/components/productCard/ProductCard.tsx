@@ -1,21 +1,21 @@
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
-import { ProductType, productPropType } from "../../types/types";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { EventHandler, useContext } from "react";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+
+import { ProductType, productPropType } from "../../types/types";
 import { ProductDataContext } from "../../contexts/ProductProvider";
 import { colors } from "../../constants/theme";
 
-export const ProductCard = ({
-  title,
-  price,
-  favorited,
-  image,
-  id,
-}: productPropType) => {
+export const ProductCard = ({ title, price, favorited, image, id }: productPropType) => {
+  const sizeHeart = 27
+  const colorHeart = colors.background
+
   const favoriteHandler = (id: number, currentSatte: boolean) => {
     updateProduct(id, favorited);
   };
+
   const { apiData, updateProduct } = useContext(ProductDataContext);
+
   return (
     <View style={style.wrap}>
       <View>
@@ -29,13 +29,13 @@ export const ProductCard = ({
       </View>
       <View style={style.itemPriceWrap}>
         <View style={style.itemPrice}>
-          <Text style={style.itemPriceText}>{`R$ ${price}`}</Text>
+          <Text style={style.itemPriceText}>{`R$ ${price.toFixed(2).replace('.', ',')}`}</Text>
         </View>
         <Ionicons
           onPress={() => favoriteHandler(id, favorited)}
-          name="heart"
-          size={27}
-          color={favorited ? colors.primary : colors.light}
+          name={favorited ? 'heart' : 'heart-outline'}
+          size={sizeHeart}
+          color={colorHeart}
         />
       </View>
     </View>
@@ -55,7 +55,7 @@ const style = StyleSheet.create({
   },
 
   itemTitle: {
-    color: colors.light,
+    color: colors.background,
     fontWeight: "bold",
     fontSize: 12,
     textAlign: "center",
