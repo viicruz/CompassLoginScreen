@@ -4,9 +4,11 @@ import {
   type NativeStackHeaderProps,
 } from "@react-navigation/native-stack";
 
-import { View, Text, TouchableOpacity } from "react-native";
-import { createBottomTabNavigator, type BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
-
+import { View, TouchableOpacity } from "react-native";
+import {
+  createBottomTabNavigator,
+  type BottomTabNavigationOptions,
+} from "@react-navigation/bottom-tabs";
 
 import Arrow from "../../assets/icons/Arrow";
 
@@ -16,7 +18,6 @@ import SignUp from "../../screens/SignUp";
 import Home from "../../screens/Home";
 import ShoppingCart from "../../screens/ShoppingCart";
 
-
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const configuration: NativeStackNavigationOptions = {
@@ -25,23 +26,17 @@ const configuration: NativeStackNavigationOptions = {
   },
 };
 
-const bottomTabConfigurations : BottomTabNavigationOptions ={
+const bottomTabConfigurations: BottomTabNavigationOptions = {
   headerShown: false,
-  tabBarActiveBackgroundColor:colors.tabBarNavigator,
-
-  
-}
+  tabBarActiveBackgroundColor: colors.tabBarNavigator,
+};
 export default function loginNavigation() {
   return (
     <Stack.Navigator screenOptions={configuration}>
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="SignUp" component={SignUp} />
-<<<<<<< HEAD
       <Stack.Screen name="Home" component={HomeTabStackNavigator} />
-=======
-      <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="ShoppingCart" component={ShoppingCart} />
->>>>>>> CreateRoutes
     </Stack.Navigator>
   );
 }
@@ -67,8 +62,6 @@ function Header(props: NativeStackHeaderProps) {
           <Arrow size={24} />
         </TouchableOpacity>
       )}
-
-
     </View>
   );
 }
