@@ -7,6 +7,6 @@ export default function Card() {
     <View style={styles.container}>
       <View style={styles.cardStyle}>
       </View>
-      </View>
+    </View>
   );
 }
