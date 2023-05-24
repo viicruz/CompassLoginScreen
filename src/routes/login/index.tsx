@@ -14,6 +14,8 @@ import { colors } from "../../constants/theme";
 import Login from "../../screens/Login";
 import SignUp from "../../screens/SignUp";
 import Home from "../../screens/Home";
+import ShoppingCart from "../../screens/ShoppingCart";
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -34,7 +36,12 @@ export default function loginNavigation() {
     <Stack.Navigator screenOptions={configuration}>
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="SignUp" component={SignUp} />
+<<<<<<< HEAD
       <Stack.Screen name="Home" component={HomeTabStackNavigator} />
+=======
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="ShoppingCart" component={ShoppingCart} />
+>>>>>>> CreateRoutes
     </Stack.Navigator>
   );
 }
