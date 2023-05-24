@@ -18,6 +18,7 @@ import SignUp from "../../screens/SignUp";
 import Home from "../../screens/Home";
 import ShoppingCart from "../../screens/ShoppingCart";
 import { ProductDataContext } from "../../contexts/ProductProvider";
+import TabBar from "../../components/common/TabBar";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -30,6 +31,21 @@ const configuration: NativeStackNavigationOptions = {
 const bottomTabConfigurations: BottomTabNavigationOptions = {
   headerShown: false,
   tabBarActiveBackgroundColor: colors.tabBarNavigator,
+  tabBarInactiveBackgroundColor:  colors.tabBarNavigator,
+  tabBarShowLabel:false,
+  tabBarIcon: (props)=>{
+    return(
+      <View>
+
+      </View>
+    )
+  },
+ 
+  // tabBarBadgeStyle:{
+  //   backgroundColor: colors.buyAdd
+  // },
+  // tabBarBadge:'2'
+  
 };
 export default function loginNavigation() {
   return (
@@ -37,15 +53,16 @@ export default function loginNavigation() {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="Home" component={HomeTabStackNavigator} />
-      <Stack.Screen name="ShoppingCart" component={ShoppingCart} />
+      
     </Stack.Navigator>
   );
 }
 
 function HomeTabStackNavigator() {
   return (
-    <Tab.Navigator screenOptions={bottomTabConfigurations}>
-      <Tab.Screen name="Bar" component={Home} />
+    <Tab.Navigator screenOptions={bottomTabConfigurations} tabBar={(props)=><TabBar {...props}/>}>
+      <Tab.Screen name="HomeBar" component={Home} />
+      <Tab.Screen name="ShoppingCart" component={ShoppingCart} />
     </Tab.Navigator>
   );
 }

@@ -82,10 +82,10 @@ export default function Login() {
 
         <Button
           onPress={() => {
-            navigation.navigate("ShoppingCart" as never);
+            navigation.navigate("Home" as never);
             
           }}
-          name="ShoppingCart"
+          name="Home"
         />
         
       </View>
