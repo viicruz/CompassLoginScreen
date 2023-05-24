@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { View, FlatList, ListRenderItemInfo, } from "react-native";
 
-import { ProductCard } from "../../components/ProductCard/ProductCard";
+import { ProductCard } from "../../components/ProductCard";
 import { ProductDataContext } from "../../contexts/ProductProvider";
 import { productPropType } from "../../types/types";
 import { styles } from "./styles";

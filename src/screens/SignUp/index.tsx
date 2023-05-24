@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
-import { Text, Touchable, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Checkbox } from "expo-checkbox";
 
-import Button from "../../components/common/Button";
-import Input from "../../components/common/Input";
-import Footer from "../../components/common/Footer";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
+import Footer from "../../components/Footer";
+import Title from "../../components/Title";
 
 import { styles } from "./styles";
-import Title from "../../components/common/Title";
-import { colors } from "../../constants/theme";
+
 
 type UserCredential = {
   email: string;
@@ -41,10 +41,10 @@ export default function SignUp() {
     });
   }, [userCredential]);
 
-  //!debug
-  useEffect(() => {
-    console.log(isCredentialValid);
-  }, [isCredentialValid]);
+  // //!debug
+  // useEffect(() => {
+  //   console.log(isCredentialValid);
+  // }, [isCredentialValid]);
 
   return (
     <View style={styles.signUpScreen}>
@@ -156,11 +156,11 @@ function isEmailOk(email: string): boolean {
 function isPasswordOk(password: string): boolean {
   const regexUpperCase = /[ A-Za-z]/;
   const regexNumber = /[0-9]/;
-  let isPassordOk = true;
-  if (password.length < 6) isPassordOk = false;
-  if (!regexUpperCase.test(password)) isPassordOk = false;
-  if (!regexNumber.test(password)) isPassordOk = false;
-  return isPassordOk;
+  let isPasswordOk = true;
+  if (password.length < 6) isPasswordOk = false;
+  if (!regexUpperCase.test(password)) isPasswordOk = false;
+  if (!regexNumber.test(password)) isPasswordOk = false;
+  return isPasswordOk;
 }
 
 function isUsernameOk(username: string): boolean {

@@ -1,6 +1,6 @@
 import { Image, Text, View, StyleSheet } from "react-native";
 import { styles } from "./styles";
-import Excluir from "../excluir";
+import Delete from "./Delete";
 
 
 export default function CardProd () {
@@ -19,7 +19,7 @@ export default function CardProd () {
 
                 
             </View>
-            <Excluir></Excluir>
+            <Delete/>
         </View>
     );
 }

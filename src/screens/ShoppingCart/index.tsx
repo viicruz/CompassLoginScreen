@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native';
 import { styles } from './styles';
-import ButtonBuyAdd from '../../components/common/ButtonBuyAdd';
+import ButtonBuyAdd from '../../components/ButtonBuyAdd';
 export default function ShoppingCart() {
    return (
       <View style={styles.container}>
