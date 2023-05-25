@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import Button from "../../components/common/Button";
-import Input from "../../components/common/Input";
-import Footer from "../../components/common/Footer";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
+import Footer from "../../components/Footer";
 
 import { styles } from "./styles";
+import Title from "../../components/Title";
 
 type UserCredential = {
   email: string;
@@ -32,17 +33,15 @@ export default function Login() {
     });
   }, [userCredential]);
 
-  //!debug
-  useEffect(() => {
-    console.log(isCredentialValid);
-  }, [isCredentialValid]);
+  // //!debug
+  // useEffect(() => {
+  //   console.log(isCredentialValid);
+  // }, [isCredentialValid]);
 
   return (
-    <View style={styles.loginScreen}>
-      <View>
-        <Text style={styles.textContainer}>Welcome</Text>
-      </View>
-      <View style={styles.inputHolder}>
+    <View style={styles.container}>
+      <Title title="Welcome" />
+      <View style={styles.inputContainer}>
         <Input
           //Must contain "@, ." and minimum of 5 characters.
           isWrong={!isCredentialValid.email}
@@ -56,6 +55,7 @@ export default function Login() {
           icon="Mail"
           placeholder="Your Email"
         />
+
         <Input
           //Minimum 6 characters and 1 letter.
           isWrong={!isCredentialValid.password}
@@ -70,15 +70,23 @@ export default function Login() {
           icon="Lock"
           placeholder="Your Password"
         />
-      </View>
-      <Button
-        onPress={() => {
-          if (isCredentialValid.email && isCredentialValid.password) 
+
+        <Button
+          onPress={() => {
+            if (isCredentialValid.email && isCredentialValid.password)
+              navigation.navigate("Home" as never);
+          }}
+          name="login"
+        />
+
+        {/* <Button
+          onPress={() => {
             navigation.navigate("Home" as never);
-          
-        }}
-        name="LOGIN"
-      />
+            
+          }}
+          name="Home"
+        /> */}
+      </View>
       <Footer
         goTo="SignUp"
         textName="Don't have an account? "

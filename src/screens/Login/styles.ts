@@ -1,26 +1,18 @@
 import { StyleSheet } from "react-native";
+import { colors } from "../../constants/theme";
 
 export const styles = StyleSheet.create({
-    loginScreen: {
-      backgroundColor: "#2D2D2D",
+  container: {
+      backgroundColor: colors.background,
       flex: 1,
-      position: "relative",
       alignItems: "center",
-      display: "flex",
-      flexDirection: "column",
     },
-  
-    inputHolder: {
-      display: "flex",
-      marginTop: 80,
-      gap: 32,
-      marginVertical: 30,
-      padding: 20,
-    },
-  
-    textContainer: {
-      fontSize: 40,
-      color: "#D78F3C",
-      marginTop: 80,
-    },
+    
+    inputContainer: {
+        width: '100%',
+        paddingHorizontal: 20,
+        height: 227,
+        justifyContent:"space-between",
+        marginTop: '30%',
+    }
   });
