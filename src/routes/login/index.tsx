@@ -22,6 +22,7 @@ import Home from "../../screens/Home";
 import ShoppingCart from "../../screens/ShoppingCart";
 import { ProductDataContext } from "../../contexts/ProductProvider";
 import TabBar from "../../components/TabBar";
+import ProductDetailScreen from "../../screens/ProductDetailScreen/ProductDetailScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();

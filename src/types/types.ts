@@ -19,3 +19,9 @@ export type productPropType = {
   image: string;
   id: number;
 };
+
+export type RootStackParamList = {
+  Home: undefined;
+  Details: { itemId: number };
+  Profile: { userId: string };
+};
