@@ -1,13 +1,34 @@
-import { useContext } from "react";
-import { View, FlatList, ListRenderItemInfo, } from "react-native";
+import { useContext, useEffect, useState } from "react";
+import {
+  View,
+  FlatList,
+  ListRenderItemInfo,
+  Text,
+  StyleSheet,
+} from "react-native";
 
 import { ProductCard } from "../../components/ProductCard";
 import { ProductDataContext } from "../../contexts/ProductProvider";
 import { productPropType } from "../../types/types";
 import { styles } from "./styles";
+import FetchLoader from "../../components/Loaders/fetchLoader";
 
 export default function Home() {
-  const { apiData } = useContext(ProductDataContext);
+  const { apiData, getProducts } = useContext(ProductDataContext);
+  const [isLoading, setIsloading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await getProducts();
+      setIsloading(false);
+    };
+    // setTimeout(() => {
+    //   setIsloading(false);
+    // }, 5000);
+
+    fetchData();
+  }, []);
+
   const itemRenderer = ({ item }: ListRenderItemInfo<productPropType>) => {
     return (
       <ProductCard
@@ -19,6 +40,15 @@ export default function Home() {
       />
     );
   };
+
+  if (isLoading)
+    return (
+      <View style={_styles.loadingMessageContainer}>
+        <FetchLoader isLoading={isLoading} setIsloading={setIsloading} />
+        <Text style={_styles.loadingMessage}> Carregando Dados</Text>
+      </View>
+    );
+
   return (
     <View style={styles.container}>
       <View>
@@ -35,3 +65,16 @@ export default function Home() {
     </View>
   );
 }
+
+const _styles = StyleSheet.create({
+  loadingMessageContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  loadingMessage: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+});
