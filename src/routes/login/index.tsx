@@ -22,7 +22,7 @@ import Home from "../../screens/Home";
 import ShoppingCart from "../../screens/ShoppingCart";
 import { ProductDataContext } from "../../contexts/ProductProvider";
 import TabBar from "../../components/TabBar";
-import ProductDetailScreen from "../../screens/ProductDetailScreen/ProductDetailScreen";
+import ProductDetailScreen from "../../screens/ProductDetailScreen/";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -71,6 +71,7 @@ export default function loginNavigation() {
         }}
       />
       <Stack.Screen name="Home" component={HomeTabStackNavigator} />
+      <Stack.Screen name="Detail" component={ProductDetailScreen} />
     </Stack.Navigator>
   );
 }
