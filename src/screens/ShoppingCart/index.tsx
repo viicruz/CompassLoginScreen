@@ -1,16 +1,17 @@
-import { View, Text } from 'react-native';
-import { styles } from './styles';
-import ButtonBuyAdd from '../../components/ButtonBuyAdd';
+import { View, Text } from "react-native";
+import ButtonBuyAdd from "../../components/ButtonBuyAdd";
+import { useContext } from "react";
+import { ProductDataContext } from "../../contexts/ProductProvider";
+import EmptyCart from "../../components/EmptyCart/EmptyCart";
+import CartItems from "../../components/CartItems/CartItems";
 export default function ShoppingCart() {
-   return (
-      <View style={styles.container}>
-         <View style={styles.containerArea}>
-            <Text style={styles.warning}>Ops, Empty Cart :( </Text>
-            <Text style={styles.text}>Add a product </Text>
-         </View>
-         <View style={styles.buttonPlace}>
-            <ButtonBuyAdd label='buy' onPress={() => { }} />
-         </View>
-      </View>
-   )
+  const { cartItemsIndex } = useContext(ProductDataContext);
+  if (!cartItemsIndex.length) {
+    return <EmptyCart />;
+  }
+  return (
+    <View>
+      <CartItems />
+    </View>
+  );
 }
