@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {  View } from "react-native";
+import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import Button from "../../components/Button";
@@ -42,52 +42,50 @@ export default function Login() {
     <View style={styles.container}>
       <Title title="Welcome" />
       <View style={styles.inputContainer}>
-          <Input
-            //Must contain "@, ." and minimum of 5 characters.
-            isWrong={!isCredentialValid.email}
-            wrongText="Please enter a valid email address"
-            onChange={(e) => {
-              setUserCredential({
-                ...userCredential,
-                email: e,
-              });
-            }}
-            icon="Mail"
-            placeholder="Your Email"
-          />
+        <Input
+          //Must contain "@, ." and minimum of 5 characters.
+          isWrong={!isCredentialValid.email}
+          wrongText="Please enter a valid email address"
+          onChange={(e) => {
+            setUserCredential({
+              ...userCredential,
+              email: e,
+            });
+          }}
+          icon="Mail"
+          placeholder="Your Email"
+        />
 
-          <Input
-            //Minimum 6 characters and 1 letter.
-            isWrong={!isCredentialValid.password}
-            wrongText="Please enter a valid password"
-            onChange={(e) => {
-              setUserCredential({
-                ...userCredential,
-                password: e,
-              });
-            }}
-            secureTextEntry
-            icon="Lock"
-            placeholder="Your Password"
-          />
-        
+        <Input
+          //Minimum 6 characters and 1 letter.
+          isWrong={!isCredentialValid.password}
+          wrongText="Please enter a valid password"
+          onChange={(e) => {
+            setUserCredential({
+              ...userCredential,
+              password: e,
+            });
+          }}
+          secureTextEntry
+          icon="Lock"
+          placeholder="Your Password"
+        />
+
         <Button
           onPress={() => {
-            if (isCredentialValid.email && isCredentialValid.password) 
+            if (isCredentialValid.email && isCredentialValid.password)
               navigation.navigate("Home" as never);
-            
           }}
           name="login"
         />
 
-        <Button
+        {/* <Button
           onPress={() => {
             navigation.navigate("Home" as never);
             
           }}
           name="Home"
-        />
-        
+        /> */}
       </View>
       <Footer
         goTo="SignUp"
