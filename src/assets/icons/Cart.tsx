@@ -49,7 +49,7 @@ export default function IconCart(props: Props) {
           stroke-linejoin="round"
         />
       </Svg>
-      ;
+      
     </View>
   );
 }
