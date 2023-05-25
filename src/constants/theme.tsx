@@ -1,3 +1,5 @@
+import { Dimensions } from "react-native";
+
 export const fontsize = {
 
     titleH1: 36,
@@ -29,4 +31,5 @@ export const colors = {
     textDescription: '#D4D4D4',
 };
 
+export const windowWidth = Dimensions.get('window').width;
 
