@@ -70,6 +70,11 @@ export default function loginNavigation() {
           headerShown: true,
         }}
       />
+        <Stack.Screen
+        name="Detail"
+        component={ProductDetailScreen}
+          
+      />
       <Stack.Screen name="Home" component={HomeTabStackNavigator} />
     </Stack.Navigator>
   );
