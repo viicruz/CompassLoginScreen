@@ -3,6 +3,7 @@ import { ProductDataContext } from "../../contexts/ProductProvider";
 import { ProductType, productPropType } from "../../types/types";
 import { FlatList, ListRenderItemInfo, View } from "react-native";
 import CartItem from "./CartItem";
+import { styles } from "../cards/styles";
 
 function CartItems() {
   const { cartItemsIndex, apiData } = useContext(ProductDataContext);
@@ -26,13 +27,18 @@ function CartItems() {
 
   const renderItem = ({ item }: ListRenderItemInfo<productPropType>) => {
     return (
-      <CartItem
+      <>
+        <CartItem
         price={item.price}
         image={item.image}
         title={item.title}
         id={item.id}
         favorited={item.favorited}
-      />
+        />
+
+       <View style={styles.line}></View>
+
+      </>
     );
   };
   return (
@@ -42,6 +48,7 @@ function CartItems() {
         keyExtractor={(item) => item.id + "aa"}
         renderItem={renderItem}
       ></FlatList>
+     
     </View>
   );
 }
