@@ -29,7 +29,7 @@ const configuration: NativeStackNavigationOptions = {
   header: (props) => {
     return <Header {...props} />;
   },
-  headerShown:false,
+  headerShown: false,
 };
 
 const bottomTabConfigurations: BottomTabNavigationOptions = {
@@ -89,9 +89,13 @@ function HomeTabStackNavigator() {
           },
         }}
       />
-      <Tab.Screen name="ShoppingCart" component={ShoppingCart} options={{
-        headerShown: false,
-      }} />
+      <Tab.Screen
+        name="ShoppingCart"
+        component={ShoppingCart}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Tab.Navigator>
   );
 }
@@ -125,7 +129,11 @@ function HomeHeader(props: BottomTabHeaderProps) {
       </View>
 
       <View style={styles.IconCartContainer}>
-        <Cart size={27} />
+        <TouchableOpacity onPress={() => {
+          props.navigation.navigate("ShoppingCart");
+        }}>
+          <Cart size={27} />
+        </TouchableOpacity>
       </View>
     </View>
   );
