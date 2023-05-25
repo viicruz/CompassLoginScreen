@@ -1,18 +1,19 @@
 import { StyleSheet} from "react-native";
-import {fontsize, colors} from "../../../constants/theme";
+import {fontsize, colors} from "../../constants/theme";
 
 export const styles = StyleSheet.create({ 
 
     cardBox: {
         flexDirection: 'row',
         alignItems: 'center',
-        display: "flex",
-        width: '368px',
-        height: '139px',
+        width: 368,
+        height: 139,
         borderRadius: 25,
         padding: 12,
         backgroundColor: colors.cardProduct,
-        marginTop: 20
+        marginTop: 20,
+        marginBottom: 20,
+        alignSelf: "center",
         
         },
     
@@ -20,15 +21,16 @@ export const styles = StyleSheet.create({
     
         flex: 1,
         marginLeft: 20,
+
         },
     
         priceBox : {
         
-        width: '140px',
-        height: '43px',
+        width: 140, 
+        height: 43,
         backgroundColor: colors.background,
         marginTop: 10,
-        padding: 10,
+        padding: 8,
         alignItems: 'center',
         borderRadius: 6,
         shadowColor: '#000',
@@ -41,17 +43,20 @@ export const styles = StyleSheet.create({
     
     
         image: {
-         width: '109px',
-         height: '124px',
+
+         width: 100,
+         height: 130,
+    
     
         },
     
         fonts: {
     
         fontSize: fontsize.textCart,
-        color: '#F5F5F5',
+        color: colors.background,
         flexWrap: 'wrap',
         marginBottom: 10,
+        fontWeight: "bold",
         
         
         },
@@ -61,6 +66,16 @@ export const styles = StyleSheet.create({
         fontSize: 19,
         fontWeight: '600',
         
+        },
+
+        line: {
+
+        borderTopColor: colors.input,
+        borderTopWidth: 1,
+        width: 367,
+        alignSelf: 'center',
+        paddingBottom: 5, 
+
         }
         
 });

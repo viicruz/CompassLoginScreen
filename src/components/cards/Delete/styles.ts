@@ -5,29 +5,24 @@ export const styles = StyleSheet.create({
 
    
 container: {
-    width: 45,
-    heigh: 45,
+    width: 50,
+    height: 50,
     backgroundColor: colors.warning,
-    borderRadius: 25,
+    padding: 12,
+    borderRadius: 60,
     alignItems: 'center',
+    justifyContent: "center",
     position: 'absolute',
     bottom: 40,
     right: -16
+
     
     
     
     
     },
       
-    fonts: {
     
-      fontSize: 30,
-      color: colors.white,
-      marginBottom: 8,
-      transform: [{ scaleX: 1.5 }, { scaleY: 1.5 }],
-      
-    }
-      
       
       
 });

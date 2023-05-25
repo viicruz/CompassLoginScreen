@@ -1,20 +1,26 @@
 import React from "react";
 import { productPropType } from "../../types/types";
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
+import Excluir from "../cards/Delete";
+import {styles} from "../cards/styles";
 
 function CartItem({ price, title, image, id, favorited }: productPropType) {
   return (
-    <View>
+    <View style={styles.cardBox}>
       <View>
-        <Text>Image</Text>
+        <Image source={{uri:image}} style={styles.image}/>
       </View>
 
-      <View>
-        <Text>{title}</Text>
-        <Text>{price}</Text>
+      <View style={styles.detailsContainer}>
+        <Text style={styles.fonts}>{title}</Text>
+
+        <View style={styles.priceBox}>
+          <Text style={styles.priceProd}>{`R$ ${price.toFixed(2).replace('.',',')}`}</Text>
+        </View>  
       </View>
+      <Excluir/>
     </View>
   );
-}
+} 
 
 export default CartItem;
