@@ -30,5 +30,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: "white",
   },
+
+  detailHeaderContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingTop: 40,
+    paddingRight: 25,
+    backgroundColor: colors.background,
+  },
 });
 export default styles;
