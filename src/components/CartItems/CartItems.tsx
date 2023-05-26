@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useId } from "react";
 import { FlatList, ListRenderItemInfo, View } from "react-native";
 
 import { ProductDataContext } from "../../contexts/ProductProvider";
@@ -7,6 +7,7 @@ import CartItem from "./CartItem";
 import Line from "../Line";
 
 function CartItems() {
+  const id = useId();
   const { cartItemsIndex, apiData } = useContext(ProductDataContext);
   const [carts, setCarts] = useState<ProductType[]>([]);
 
@@ -41,11 +42,12 @@ function CartItems() {
     );
   };
 
+
   return (
     <View>
       <FlatList
         data={carts}
-        keyExtractor={(item, index) => `${item.id + index}`}
+        keyExtractor={(item, index) => `${item.id + id}`}
         renderItem={renderItem}
       ></FlatList>
     </View>

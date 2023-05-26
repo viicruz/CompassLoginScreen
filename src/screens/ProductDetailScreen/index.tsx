@@ -1,22 +1,36 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Image, Pressable, Text, View, ScrollView } from "react-native";
+import {
+  Image,
+  Pressable,
+  Text,
+  View,
+  ScrollView,
+  ActivityIndicator,
+} from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import ButtonBuyAdd from "../../components/ButtonBuyAdd";
 import ModalComponent from "../../components/ModalComponent";
 import { ProductDataContext } from "../../contexts/ProductProvider";
 import { ProductType } from "../../types/types";
-import { IconMinus, IconPlus, IconFullStar, IconHalfStar } from "../../assets/icons";
+import {
+  IconMinus,
+  IconPlus,
+  IconFullStar,
+  IconHalfStar,
+} from "../../assets/icons";
 import { colors } from "../../constants/theme";
 import { styles } from "./styles";
 
 export default function ProductDetailScreen({ route }: any) {
-  const { apiData, updateCart, cartItemsIndex } = useContext(ProductDataContext);
+  const { apiData, updateCart, cartItemsIndex } =
+    useContext(ProductDataContext);
   const [currentData, setCurrentData] = useState<ProductType>();
   const [quantity, setQuantity] = useState<number>(1);
   const [cartId, setCartId] = useState<number>(-1);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [isFavorited, setIsFavorited] = useState<boolean>(false);
+  const [isProductAdded, setIsProductAdded] = useState<boolean>(false);
 
   useEffect(() => {
     const param = route.params;
@@ -40,6 +54,7 @@ export default function ProductDetailScreen({ route }: any) {
   const toggleFavorite = () => {
     setIsFavorited(!isFavorited);
   };
+  
 
   const addCartHandler = () => {
     let quat: number[] = [];
@@ -49,6 +64,10 @@ export default function ProductDetailScreen({ route }: any) {
     }
     updateCart(quat);
     setModalVisible(true);
+    setIsProductAdded(true);
+    setTimeout(() => {
+      setIsProductAdded(false);
+    }, 3000);
   };
 
   const closeModal = () => {
@@ -63,9 +82,7 @@ export default function ProductDetailScreen({ route }: any) {
       <ScrollView>
         <View style={styles.contentContainer}>
           <View style={styles.headerCard}>
-            <Text style={styles.textHeaderCard}>
-            {currentData?.title}
-            </Text>
+            <Text style={styles.textHeaderCard}>{currentData?.title}</Text>
             <Pressable onPress={toggleFavorite}>
               <Ionicons
                 name={isFavorited ? "heart" : "heart-outline"}
@@ -86,7 +103,9 @@ export default function ProductDetailScreen({ route }: any) {
             <IconHalfStar size={30} />
           </View>
           <View style={styles.containerPrice}>
-            <Text style={styles.price}>{`R$ ${currentData?.price.toFixed(2).replace('.', ',')}`}</Text>
+            <Text style={styles.price}>{`R$ ${currentData?.price
+              .toFixed(2)
+              .replace(".", ",")}`}</Text>
             <View style={styles.areaQuantity}>
               <Pressable style={styles.circle} onPress={decreaseQuantity}>
                 <IconMinus size={25} />
@@ -99,8 +118,12 @@ export default function ProductDetailScreen({ route }: any) {
           </View>
 
           <Text style={styles.description}>{currentData?.description}</Text>
-          
-          <ButtonBuyAdd label="add to cart" onPress={addCartHandler} />
+
+          <ButtonBuyAdd
+            label="add to cart"
+            onPress={addCartHandler}
+            isLoading={isProductAdded}
+          />
           <ModalComponent
             title="Good!"
             text="Product added to cart."
