@@ -22,7 +22,7 @@ function CartItems() {
 
   useEffect(() => {
     const filtered = getCartItems();
-    console.log(`rerender ${cartItemsIndex}`);
+    // console.log(`rerender ${cartItemsIndex}`);
     setCarts(filtered);
   }, [cartItemsIndex]);
 

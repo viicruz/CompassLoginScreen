@@ -71,7 +71,7 @@ export default function ProductDetailScreen({ route }: any) {
         <View style={styles.contentContainer}>
           <View style={styles.headerCard}>
             <Text style={styles.textHeaderCard}>
-              JPR Fone de Ouvido Tune 510BT Bluetooth 5.0
+              {currentData?.title}
             </Text>
             <Ionicons
               name={currentData?.favorited ? "heart" : "heart-outline"}
@@ -104,13 +104,6 @@ export default function ProductDetailScreen({ route }: any) {
           </View>
 
           <Text style={styles.description}>{currentData?.description}</Text>
-          
-          {/* <ModalConfirm
-            title="Good!"
-            text="Product added to cart."
-            visible={modalVisible}
-            onRequestClose={closeModal}
-          /> */}
 
           <ButtonBuyAdd label="add to cart" onPress={addCartHandler} />
           <ModalComponent
