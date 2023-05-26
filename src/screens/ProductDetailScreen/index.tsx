@@ -1,34 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
-import {
-  Image,
-  Pressable,
-  Text,
-  View,
-  ScrollView,
-} from "react-native";
+import { Image, Pressable, Text, View, ScrollView } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
+import ButtonBuyAdd from "../../components/ButtonBuyAdd";
+import ModalComponent from "../../components/ModalComponent";
 import { ProductDataContext } from "../../contexts/ProductProvider";
 import { ProductType } from "../../types/types";
+import { IconMinus, IconPlus, IconFullStar, IconHalfStar } from "../../assets/icons";
 import { colors } from "../../constants/theme";
-import ButtonBuyAdd from "../../components/ButtonBuyAdd";
-import {
-  IconMinus,
-  IconPlus,
-  IconFullStar,
-  IconHalfStar,
-} from "../../assets/icons";
 import { styles } from "./styles";
-import ModalComponent from "../../components/ModalComponent";
 
 export default function ProductDetailScreen({ route }: any) {
-  const { apiData, updateCart, cartItemsIndex } =
-    useContext(ProductDataContext);
+  const { apiData, updateCart, cartItemsIndex } = useContext(ProductDataContext);
   const [currentData, setCurrentData] = useState<ProductType>();
   const [quantity, setQuantity] = useState<number>(1);
   const [cartId, setCartId] = useState<number>(-1);
-
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [isFavorited, setIsFavorited] = useState<boolean>(false);
 
   useEffect(() => {
     const param = route.params;
@@ -36,6 +24,7 @@ export default function ProductDetailScreen({ route }: any) {
     setCartId(id);
     const result = apiData.filter((item) => item.id === id);
     setCurrentData(result[0]);
+    setIsFavorited(result[0]?.favorited || false);
   }, [cartItemsIndex]);
 
   const addQuantity = () => {
@@ -48,8 +37,9 @@ export default function ProductDetailScreen({ route }: any) {
     }
   };
 
-  const sizeHeart = 53;
-  const colorHeart = colors.background;
+  const toggleFavorite = () => {
+    setIsFavorited(!isFavorited);
+  };
 
   const addCartHandler = () => {
     let quat: number[] = [];
@@ -65,19 +55,24 @@ export default function ProductDetailScreen({ route }: any) {
     setModalVisible(false);
   };
 
+  const sizeHeart = 53;
+  const colorHeart = colors.background;
+
   return (
     <View style={styles.container}>
       <ScrollView>
         <View style={styles.contentContainer}>
           <View style={styles.headerCard}>
             <Text style={styles.textHeaderCard}>
-              {currentData?.title}
+            {currentData?.title}
             </Text>
-            <Ionicons
-              name={currentData?.favorited ? "heart" : "heart-outline"}
-              size={sizeHeart}
-              color={colorHeart}
-            />
+            <Pressable onPress={toggleFavorite}>
+              <Ionicons
+                name={isFavorited ? "heart" : "heart-outline"}
+                size={sizeHeart}
+                color={colorHeart}
+              />
+            </Pressable>
           </View>
           <View>
             <Image style={styles.image} source={{ uri: currentData?.image }} />
@@ -104,14 +99,13 @@ export default function ProductDetailScreen({ route }: any) {
           </View>
 
           <Text style={styles.description}>{currentData?.description}</Text>
-
+          
           <ButtonBuyAdd label="add to cart" onPress={addCartHandler} />
           <ModalComponent
             title="Good!"
             text="Product added to cart."
             visible={modalVisible}
             onClose={closeModal}
-
           />
         </View>
       </ScrollView>
