@@ -2,10 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import {
   Image,
   Pressable,
-  StyleSheet,
   Text,
   View,
-  Dimensions,
   ScrollView,
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -21,6 +19,7 @@ import {
   IconHalfStar,
 } from "../../assets/icons";
 import { styles } from "./styles";
+import ModalComponent from "../../components/ModalComponent";
 
 export default function ProductDetailScreen({ route }: any) {
   const { apiData, updateCart, cartItemsIndex } =
@@ -28,6 +27,9 @@ export default function ProductDetailScreen({ route }: any) {
   const [currentData, setCurrentData] = useState<ProductType>();
   const [quantity, setQuantity] = useState<number>(1);
   const [cartId, setCartId] = useState<number>(-1);
+
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+
   useEffect(() => {
     const param = route.params;
     const id: number = param.id;
@@ -48,7 +50,6 @@ export default function ProductDetailScreen({ route }: any) {
 
   const sizeHeart = 53;
   const colorHeart = colors.background;
-  const favorited = true;
 
   const addCartHandler = () => {
     let quat: number[] = [];
@@ -57,7 +58,13 @@ export default function ProductDetailScreen({ route }: any) {
       quat.push(id);
     }
     updateCart(quat);
+    setModalVisible(true);
   };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -84,7 +91,7 @@ export default function ProductDetailScreen({ route }: any) {
             <IconHalfStar size={30} />
           </View>
           <View style={styles.containerPrice}>
-            <Text style={styles.price}>{`R$ ${currentData?.price}`}</Text>
+            <Text style={styles.price}>{`R$ ${currentData?.price.toFixed(2).replace('.', ',')}`}</Text>
             <View style={styles.areaQuantity}>
               <Pressable style={styles.circle} onPress={decreaseQuantity}>
                 <IconMinus size={25} />
@@ -97,8 +104,22 @@ export default function ProductDetailScreen({ route }: any) {
           </View>
 
           <Text style={styles.description}>{currentData?.description}</Text>
+          
+          {/* <ModalConfirm
+            title="Good!"
+            text="Product added to cart."
+            visible={modalVisible}
+            onRequestClose={closeModal}
+          /> */}
 
           <ButtonBuyAdd label="add to cart" onPress={addCartHandler} />
+          <ModalComponent
+            title="Good!"
+            text="Product added to cart."
+            visible={modalVisible}
+            onClose={closeModal}
+
+          />
         </View>
       </ScrollView>
     </View>
