@@ -15,7 +15,6 @@ export default function TabBar(props: Props) {
   const position = props.state.index;
   return (
     <View style={styles.tabBarContainer}>
-
       <TouchableOpacity
         onPress={() => {
           props.navigation.navigate("HomeBar");

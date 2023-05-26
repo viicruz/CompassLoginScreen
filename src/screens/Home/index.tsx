@@ -22,9 +22,6 @@ export default function Home() {
       await getProducts();
       setIsloading(false);
     };
-    // setTimeout(() => {
-    //   setIsloading(false);
-    // }, 5000);
 
     fetchData();
   }, []);
@@ -56,8 +53,8 @@ export default function Home() {
           data={apiData}
           numColumns={2}
           ItemSeparatorComponent={() => <View style={{ height: 10, gap: 5 }} />}
-          keyExtractor={(item) => {
-            return item.id + "aa";
+          keyExtractor={(item, index) => {
+            return `${item.id + index}`;
           }}
           renderItem={itemRenderer}
         ></FlatList>
