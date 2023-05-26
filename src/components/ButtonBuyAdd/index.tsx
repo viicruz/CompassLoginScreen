@@ -21,7 +21,7 @@ export default function ButtonBuyAdd({
       disabled={disable}
     >
       {isLoading ? (
-        <ActivityIndicator />
+        <ActivityIndicator color={'white'} />
       ) : (
         <Text style={styles.label}>{label}</Text>
       )}

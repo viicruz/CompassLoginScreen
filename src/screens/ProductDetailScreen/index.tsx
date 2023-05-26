@@ -5,7 +5,6 @@ import {
   Text,
   View,
   ScrollView,
-  ActivityIndicator,
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
@@ -63,9 +62,9 @@ export default function ProductDetailScreen({ route }: any) {
       quat.push(id);
     }
     updateCart(quat);
-    setModalVisible(true);
     setIsProductAdded(true);
     setTimeout(() => {
+      setModalVisible(true);
       setIsProductAdded(false);
     }, 3000);
   };

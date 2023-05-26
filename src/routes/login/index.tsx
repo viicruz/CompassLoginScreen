@@ -4,7 +4,7 @@ import {
   type NativeStackHeaderProps,
 } from "@react-navigation/native-stack";
 
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet,  } from "react-native";
 import styles from "./styles";
 import {
   createBottomTabNavigator,
