@@ -12,18 +12,18 @@ import {
   BottomTabHeaderProps,
 } from "@react-navigation/bottom-tabs";
 
-import Arrow from "../../assets/icons/Arrow";
-import Cart from "../../assets/icons/Cart";
 
-import { colors } from "../../constants/theme";
 import Login from "../../screens/Login";
 import SignUp from "../../screens/SignUp";
 import Home from "../../screens/Home";
 import ShoppingCart from "../../screens/ShoppingCart";
-import { ProductDataContext } from "../../contexts/ProductProvider";
+
 import TabBar from "../../components/TabBar";
 import ProductDetailScreen from "../../screens/ProductDetailScreen/";
 import CartItemQuantity from "../../components/CartItemQuantity";
+
+import {IconArrow, IconCart} from "../../assets/icons"
+import { colors } from "../../constants/theme";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -105,7 +105,7 @@ function HomeTabStackNavigator() {
 
 function Header(props: NativeStackHeaderProps) {
   return (
-    <View style={{ paddingTop: 40, backgroundColor: "#2D2D2D" }}>
+    <View style={{ paddingTop: 40, backgroundColor: colors.background }}>
       {props.navigation.canGoBack() && (
         <TouchableOpacity
           onPress={() => {
@@ -113,7 +113,7 @@ function Header(props: NativeStackHeaderProps) {
           }}
           style={{ marginLeft: 32 }}
         >
-          <Arrow size={24} />
+          <IconArrow size={24} />
         </TouchableOpacity>
       )}
     </View>
@@ -126,7 +126,7 @@ function HomeHeader(props: BottomTabHeaderProps) {
       <View>
         <Text style={styles.WelcomeContainer}>Welcome</Text>
         <Text style={styles.userNameContainer}>Team 1</Text>
-        <View style={styles.underwrapContainer}></View>
+        <View style={styles.underWrapContainer}></View>
       </View>
 
       <View style={styles.IconCartContainer}>
@@ -135,27 +135,14 @@ function HomeHeader(props: BottomTabHeaderProps) {
             props.navigation.navigate("ShoppingCart");
           }}
         >
-          <View style={style.wrap}>
-            <View style={style.cart}>
+          <View style={styles.wrap}>
+            <View style={styles.cart}>
               <CartItemQuantity />
             </View>
-            <Cart size={30} />
+            <IconCart size={30} />
           </View>
         </TouchableOpacity>
       </View>
     </View>
   );
 }
-
-const style = StyleSheet.create({
-  wrap: {
-    position: "relative",
-    // backgroundColor: "red",
-  },
-  cart: {
-    position: "absolute",
-    right: -20,
-    top: -20,
-    zIndex: 10,
-  },
-});
