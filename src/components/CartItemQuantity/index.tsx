@@ -1,19 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Text, View } from "react-native";
-import style from "./styles";
 import { ProductDataContext } from "../../contexts/ProductProvider";
+import style from "./styles";
 
 function CartItemQuantity() {
   const { cartItemsIndex } = useContext(ProductDataContext);
-  const [lenght, setLenght] = useState<number>(0);
+  const [length, setLength] = useState<number>(0);
 
   useEffect(() => {
-    setLenght(cartItemsIndex.length);
+    setLength(cartItemsIndex.length);
   }, [cartItemsIndex]);
 
   return (
     <View style={style.container}>
-      <Text style={style.text}>{lenght}</Text>
+      <Text style={style.text}>{length}</Text>
     </View>
   );
 }

@@ -6,11 +6,12 @@ export const styles = StyleSheet.create({
       backgroundColor: colors.background,
       flex: 1,
       alignItems: "center",
+      justifyContent: 'center'
     },
     
     inputContainer: {
         width: '100%',
-        paddingHorizontal: 20,
+        paddingHorizontal: 25,
         height: 227,
         justifyContent:"space-between",
         marginTop: '30%',

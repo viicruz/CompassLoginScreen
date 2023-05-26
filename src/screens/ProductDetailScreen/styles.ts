@@ -6,15 +6,13 @@ export const styles = StyleSheet.create({
     container: {
       backgroundColor: colors.background,
       flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
+      padding: 20,
     },
     contentContainer: {
       marginTop: 50,
       borderRadius: 15,
       alignItems: 'center',
       justifyContent: 'space-between',
-      width: windowWidth * 0.85,
       height: 733,
       backgroundColor: colors.cardProduct,
       padding: 20,

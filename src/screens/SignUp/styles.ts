@@ -13,16 +13,12 @@ export const styles = StyleSheet.create({
       width: "100%",
       height: 230,
       justifyContent: 'space-between',
-      paddingHorizontal: 20,
+      paddingHorizontal: 25,
     },
 
     areaTerms: {
       flexDirection: "row",
       gap: 5,      
-    },
-  
-    inputHolder: {
-      gap: 7,
     },
 
     CheckBoxContainer: {
@@ -33,6 +29,10 @@ export const styles = StyleSheet.create({
     },
     
     textTerms: {
+      color: colors.light,
+
+    },
+    textTermsUnderline: {
       color: colors.light,
       textDecorationLine: "underline",
     },

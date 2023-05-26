@@ -50,7 +50,7 @@ export default function SignUp() {
     <View style={styles.signUpScreen}>
       <Title title="Sign Up" />
       <View style={styles.signUpForm}>
-        <View style={styles.inputHolder}>
+        <View>
           <Input
             //Must contain "@, ." and minimum of 5 characters.
             isWrong={!isCredentialValid.email}
@@ -100,20 +100,20 @@ export default function SignUp() {
             <Checkbox
               value={isChecked}
               onValueChange={setIsChecked}
-              style={!isChecked && { borderColor: "#FF4B4B" }}
+              style={!isChecked && styles.textError}
             />
 
             <View style={styles.areaTerms}>
-              <Text style={{ color: "#f5f5f5" }}>Agree To</Text>
+              <Text style={styles.textTerms}>Agree To</Text>
               <TouchableOpacity>
-                <Text style={styles.textTerms}>Terms And Conditions</Text>
+                <Text style={styles.textTermsUnderline}>Terms And Conditions</Text>
               </TouchableOpacity>
             </View>
           </View>
 
           {!isChecked && (
             <Text
-              style={{ color: "#FF4B4B", marginLeft: 26 }}
+              style={styles.textError}
               children="Please accept the terms"
             />
           )}

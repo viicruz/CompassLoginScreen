@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
+import { FlatList, ListRenderItemInfo, View } from "react-native";
+
 import { ProductDataContext } from "../../contexts/ProductProvider";
 import { ProductType, productPropType } from "../../types/types";
-import { FlatList, ListRenderItemInfo, View } from "react-native";
 import CartItem from "./CartItem";
+import Line from "../Line";
 
 function CartItems() {
   const { cartItemsIndex, apiData } = useContext(ProductDataContext);
@@ -19,20 +21,23 @@ function CartItems() {
   };
 
   useEffect(() => {
-    const filtred = getCartItems();
+    const filtered = getCartItems();
     console.log(`rerender ${cartItemsIndex}`);
-    setCarts(filtred);
+    setCarts(filtered);
   }, [cartItemsIndex]);
 
   const renderItem = ({ item }: ListRenderItemInfo<productPropType>) => {
     return (
-      <CartItem
-        price={item.price}
-        image={item.image}
-        title={item.title}
-        id={item.id}
-        favorited={item.favorited}
-      />
+      <>
+        <CartItem
+          price={item.price}
+          image={item.image}
+          title={item.title}
+          id={item.id}
+          favorited={item.favorited}
+        />
+        <Line />
+      </>
     );
   };
 

@@ -7,11 +7,11 @@ import {
   StyleSheet,
 } from "react-native";
 
+import FetchLoader from "../../components/Loaders/fetchLoader";
 import { ProductCard } from "../../components/ProductCard";
 import { ProductDataContext } from "../../contexts/ProductProvider";
 import { productPropType } from "../../types/types";
 import { styles } from "./styles";
-import FetchLoader from "../../components/Loaders/fetchLoader";
 
 export default function Home() {
   const { apiData, getProducts } = useContext(ProductDataContext);
