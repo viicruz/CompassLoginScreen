@@ -33,11 +33,6 @@ export default function Login() {
     });
   }, [userCredential]);
 
-  // //!debug
-  // useEffect(() => {
-  //   console.log(isCredentialValid);
-  // }, [isCredentialValid]);
-
   return (
     <View style={styles.container}>
       <Title title="Welcome" />
@@ -71,18 +66,17 @@ export default function Login() {
           placeholder="Your Password"
         />
 
-        <Button
+        {/* <Button
           onPress={() => {
             if (isCredentialValid.email && isCredentialValid.password)
               navigation.navigate("Home" as never);
           }}
           name="login"
-        />
+        /> */}
 
         <Button
           onPress={() => {
             navigation.navigate("Home" as never);
-            
           }}
           name="Home"
         />

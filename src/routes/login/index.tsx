@@ -4,7 +4,7 @@ import {
   type NativeStackHeaderProps,
 } from "@react-navigation/native-stack";
 
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import styles from "./styles";
 import {
   createBottomTabNavigator,
@@ -23,6 +23,7 @@ import ShoppingCart from "../../screens/ShoppingCart";
 import { ProductDataContext } from "../../contexts/ProductProvider";
 import TabBar from "../../components/TabBar";
 import ProductDetailScreen from "../../screens/ProductDetailScreen/";
+import CartItemQuantity from "../../components/CartItemQuantity";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -120,8 +121,6 @@ function Header(props: NativeStackHeaderProps) {
 }
 
 function HomeHeader(props: BottomTabHeaderProps) {
-  console.log("aaaaa");
-
   return (
     <View style={styles.headerContainer}>
       <View>
@@ -131,12 +130,32 @@ function HomeHeader(props: BottomTabHeaderProps) {
       </View>
 
       <View style={styles.IconCartContainer}>
-        <TouchableOpacity onPress={() => {
-          props.navigation.navigate("ShoppingCart");
-        }}>
-          <Cart size={27} />
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate("ShoppingCart");
+          }}
+        >
+          <View style={style.wrap}>
+            <View style={style.cart}>
+              <CartItemQuantity />
+            </View>
+            <Cart size={30} />
+          </View>
         </TouchableOpacity>
       </View>
     </View>
   );
 }
+
+const style = StyleSheet.create({
+  wrap: {
+    position: "relative",
+    // backgroundColor: "red",
+  },
+  cart: {
+    position: "absolute",
+    right: -20,
+    top: -20,
+    zIndex: 10,
+  },
+});

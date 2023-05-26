@@ -1,7 +1,6 @@
 import { useState, createContext, ReactNode, SetStateAction } from "react";
 import { getDatas } from "../services/api";
 import { ProductType } from "../types/types";
-import { fakeData } from "./teste";
 
 interface ApiProviderProps {
   children: ReactNode;
@@ -12,19 +11,19 @@ interface ApiContextType {
   getProducts: () => void;
   apiData: ProductType[];
   cartItemsIndex: number[];
-  updateCart: (id: number) => void;
+  updateCart: (id: number[]) => void;
 }
 
 export const ProductDataContext = createContext<ApiContextType>({
   apiData: [],
   getProducts: async () => {},
   updateProduct: async (id: number, currentState: boolean) => {},
-  updateCart: (id: number) => {},
+  updateCart: async (id: number[]) => {},
   cartItemsIndex: [],
 });
 export default function ProductProvider({ children }: ApiProviderProps) {
   const [apiData, setApiData] = useState<ProductType[]>([]);
-  const [cartItemsIndex, setCartItemsIndex] = useState<number[]>([1, 3, 4]);
+  const [cartItemsIndex, setCartItemsIndex] = useState<number[]>([]);
 
   const updateProduct = (id: number, currentState: boolean) => {
     setApiData((prevList) =>
@@ -39,7 +38,6 @@ export default function ProductProvider({ children }: ApiProviderProps) {
     getDatas()
       .then((dados: any) => {
         const dad: SetStateAction<ProductType[]> = dados?.data;
-        console.log(dad.length);
         setApiData(dad);
       })
       .catch((error) => {
@@ -47,7 +45,10 @@ export default function ProductProvider({ children }: ApiProviderProps) {
       });
   };
 
-  const updateCart = (id: number) => {};
+  const updateCart = (id: number[]) => {
+    const prev = cartItemsIndex.concat(id);
+    setCartItemsIndex(prev);
+  };
 
   const values = {
     updateProduct,
