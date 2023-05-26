@@ -11,7 +11,7 @@ function EmptyCart() {
         <Text style={styles.text}>Add a product </Text>
       </View>
       <View style={styles.buttonPlace}>
-        <ButtonBuyAdd label="buy" onPress={() => {}} />
+        <ButtonBuyAdd label="buy" disable={true} />
       </View>
     </View>
   );

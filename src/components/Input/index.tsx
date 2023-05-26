@@ -1,8 +1,6 @@
 import { View, TextInput, Text } from "react-native";
-import IconMail from "../../assets/icons/IconMail";
-import IconLock from "../../assets/icons/IconLock";
-import UserIcon from "../../assets/icons/UserIcon";
 
+import { IconMail, IconLock, IconUser } from "../../assets/icons";
 import { styles } from "./styles";
 import { colors } from "../../constants/theme";
 
@@ -25,11 +23,11 @@ export default function InputField(props: Props) {
           },
         ]}
       >
-        {props.icon === "Lock" && <IconLock size={24} />}
+        {props.icon === "Lock" && <IconLock size={19} />}
 
         {props.icon === "Mail" && <IconMail size={24} />}
 
-        {props.icon === "User" && <UserIcon size={24} />}
+        {props.icon === "User" && <IconUser size={22} />}
 
         <TextInput
           placeholderTextColor={colors.inputPlaceholder}
@@ -42,7 +40,7 @@ export default function InputField(props: Props) {
         />
       </View>
       {props.isWrong && (
-        <Text style={{ color: colors.warning, marginLeft: 16 }} children={props.wrongText} />
+        <Text style={styles.warning} children={props.wrongText} />
       )}
     </View>
   );

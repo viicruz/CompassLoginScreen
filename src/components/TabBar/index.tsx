@@ -7,8 +7,7 @@ import { colors } from "../../constants/theme";
 import type { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 
 //icons
-import IconHome from "../../assets/icons/IconHome";
-import IconShop from "../../assets/icons/IconShop";
+import {IconHome, IconShop} from "../../assets/icons";
 
 interface Props extends BottomTabBarProps {}
 export default function TabBar(props: Props) {

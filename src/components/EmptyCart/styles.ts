@@ -6,11 +6,10 @@ export const styles = StyleSheet.create({
         height: '100%',
         alignItems: 'center',
         backgroundColor: colors.background,
-        
+
     },
     containerArea: {
-        // display: "none",
-        marginVertical: 150,   
+        marginVertical: 150,
     },
     warning: {
         fontSize: 32,

@@ -1,14 +1,14 @@
 import React from "react";
 import { productPropType } from "../../types/types";
 import { Text, View, Image } from "react-native";
-import Excluir from "../cards/Delete";
-import {styles} from "../cards/styles";
+import Delete from "./Delete";
+import {styles} from "./styles";
 
-function CartItem({ price, title, image, id, favorited }: productPropType) {
+function CartItem({ price, title, image, id, favorited: favorited }: productPropType) {
   return (
     <View style={styles.cardBox}>
       <View>
-        <Image source={{uri:image}} style={styles.image}/>
+        <Image resizeMode="contain" source={{uri:image}} style={styles.image}/>
       </View>
 
       <View style={styles.detailsContainer}>
@@ -18,7 +18,7 @@ function CartItem({ price, title, image, id, favorited }: productPropType) {
           <Text style={styles.priceProd}>{`R$ ${price.toFixed(2).replace('.',',')}`}</Text>
         </View>  
       </View>
-      <Excluir/>
+      <Delete/>
     </View>
   );
 } 

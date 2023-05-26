@@ -127,7 +127,7 @@ export const IconHome = (props: Props) => {
         >
             <Path
                 d="M16.1 21.5H14.9C14.4029 21.5 14 21.0971 14 20.6V17.9C14 17.4029 14.4029 17 14.9 17H16.1C16.5971 17 17 17.4029 17 17.9V20.6C17 21.0971 16.5971 21.5 16.1 21.5Z"
-                stroke={props.color || "white"}
+                stroke={props.color || colorDefault}
                 stroke-width="2.06671"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -135,14 +135,14 @@ export const IconHome = (props: Props) => {
             />
             <Path
                 d="M2 10.25L15.5 2L29 10.25"
-                stroke={props.color || "white"}
+                stroke={props.color || colorDefault}
                 stroke-width="2.06671"
                 stroke-linecap="round"
                 stroke-linejoin="round"
             />
             <Path
                 d="M26 15.5V25.1C26 25.5971 25.5971 26 25.1 26H5.9C5.40294 26 5 25.5971 5 25.1V15.5"
-                stroke={props.color || "white"}
+                stroke={props.color || colorDefault}
                 stroke-width="2.06671"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -250,7 +250,7 @@ export const IconShop = (props: Props) => {
         >
             <Path
                 d="M19.8941 9.56164L14.5186 0.575343C14.2855 0.191781 13.8927 0 13.5 0C13.1073 0 12.7145 0.191781 12.4814 0.589041L7.10591 9.56164H1.22727C0.552273 9.56164 0 10.1781 0 10.9315C0 11.0548 0.0122727 11.1781 0.0490909 11.3014L3.16636 24C3.44864 25.1507 4.39364 26 5.52273 26H21.4773C22.6064 26 23.5514 25.1507 23.8459 24L26.9632 11.3014L27 10.9315C27 10.1781 26.4477 9.56164 25.7727 9.56164H19.8941ZM9.81818 9.56164L13.5 3.53425L17.1818 9.56164H9.81818ZM13.5 20.5205C12.15 20.5205 11.0455 19.2877 11.0455 17.7808C11.0455 16.274 12.15 15.0411 13.5 15.0411C14.85 15.0411 15.9545 16.274 15.9545 17.7808C15.9545 19.2877 14.85 20.5205 13.5 20.5205Z"
-                fill={props.color || "white"}
+                fill={props.color || colorDefault}
             />
         </Svg>
     );
@@ -265,28 +265,28 @@ export const IconCart = (props: Props) => {
         >
             <Path
                 d="M25.7681 29.3064C26.9405 29.3064 27.891 28.3559 27.891 27.1834C27.891 26.011 26.9405 25.0604 25.7681 25.0604C24.5956 25.0604 23.6451 26.011 23.6451 27.1834C23.6451 28.3559 24.5956 29.3064 25.7681 29.3064Z"
-                stroke={props.color || "white"}
+                stroke={props.color || colorDefault}
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
             />
             <Path
                 d="M11.6149 29.3064C12.7873 29.3064 13.7379 28.3559 13.7379 27.1834C13.7379 26.011 12.7873 25.0604 11.6149 25.0604C10.4424 25.0604 9.4919 26.011 9.4919 27.1834C9.4919 28.3559 10.4424 29.3064 11.6149 29.3064Z"
-                stroke={props.color || "white"}
+                stroke={props.color || colorDefault}
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
             />
             <Path
                 d="M5.24595 3.83064H29.3064L26.4757 19.3991H8.07659L5.24595 3.83064ZM5.24595 3.83064C5.01006 2.88709 3.83064 1 1 1"
-                stroke={props.color || "white"}
+                stroke={props.color || colorDefault}
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
             />
             <Path
                 d="M26.4757 19.3992H8.07656H5.57253C3.04717 19.3992 1.70763 20.5048 1.70763 22.2298C1.70763 23.9548 3.04717 25.0604 5.57253 25.0604H25.768"
-                stroke={props.color || "white"}
+                stroke={props.color || colorDefault}
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
