@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 import EmptyCart from "../../components/EmptyCart";
@@ -13,9 +13,14 @@ export default function ShoppingCart() {
   const { cartItemsIndex } = useContext(ProductDataContext);
 
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [isProductPurchased, SetIsProductPurchased] = useState<boolean>(false);
 
   const openModal = () => {
-    setModalVisible(true);
+    SetIsProductPurchased(true)
+    setTimeout(() => {
+      setModalVisible(true);
+      SetIsProductPurchased(false)
+    }, 500);
   };
 
   const closeModal = () => {
@@ -39,7 +44,7 @@ export default function ShoppingCart() {
         <CartItems />
       </View>
       <View style={styles.buttonPlace}>
-        <ButtonBuyAdd label="buy" onPress={openModal} />
+        <ButtonBuyAdd label="buy" onPress={openModal} isLoading={isProductPurchased}/>
       </View>
       <ModalComponent
         visible={modalVisible}

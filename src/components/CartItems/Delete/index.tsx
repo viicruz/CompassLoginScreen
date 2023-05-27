@@ -11,7 +11,7 @@ type deleteProp = {
 export default function Excluir({ index }: deleteProp) {
   const { cartItemsIndex, removeCartItem } = useContext(ProductDataContext);
   const deleteHanler = () => {
-    removeCartItem(index);
+    removeCartItem(index);    
   };
   return (
     <Pressable onPress={deleteHanler}>

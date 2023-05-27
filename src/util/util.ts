@@ -1,5 +1,3 @@
-// export
-
 import { ProductType } from "../types/types";
 export const getCurrentProduct = (id: number, apiData: ProductType[]) => {
   const result = apiData.filter((item) => item.id === id)[0];
@@ -17,10 +15,10 @@ export const getCartItems = (
   return items;
 };
 
-export const getAmout = (cartItemsIndex: number[], apiData: ProductType[]) => {
-  const curent = getCartItems(cartItemsIndex, apiData);
-  const total = curent.reduce((acumulator, curretItem) => {
-    return acumulator + curretItem.price;
+export const getAmount = (cartItemsIndex: number[], apiData: ProductType[]) => {
+  const current = getCartItems(cartItemsIndex, apiData);
+  const total = current.reduce((accumulator, currentItem) => {
+    return accumulator + currentItem.price;
   }, 0);
 
   return total;

@@ -5,7 +5,7 @@ import { ProductDataContext } from "../../contexts/ProductProvider";
 import { ProductType, productPropType } from "../../types/types";
 import CartItem from "./CartItem";
 import Line from "../Line";
-import { getAmout, getCartItems } from "../../util/util";
+import { getAmount, getCartItems } from "../../util/util";
 
 function CartItems() {
   const { cartItemsIndex, apiData, updateAmount } =
@@ -14,9 +14,8 @@ function CartItems() {
 
   useEffect(() => {
     const filtered = getCartItems(cartItemsIndex, apiData);
-    console.log("something has change");
     setCarts(filtered);
-    const total = getAmout(cartItemsIndex, apiData);
+    const total = getAmount(cartItemsIndex, apiData);
     updateAmount(total);
   }, [cartItemsIndex]);
 
