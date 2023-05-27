@@ -4,6 +4,8 @@ import {
   type NativeStackHeaderProps,
 } from "@react-navigation/native-stack";
 
+import { useContext, useEffect, useState } from "react";
+import { ProductDataContext } from "../../contexts/ProductProvider";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import styles from "./styles";
 import {
@@ -156,6 +158,11 @@ function HomeHeader(props: BottomTabHeaderProps) {
 }
 
 function DetailHeader(props: NativeStackHeaderProps) {
+  const { cartItemsIndex } = useContext(ProductDataContext);
+  const [qtd, setQtd] = useState(cartItemsIndex.length);
+  useEffect(() => {
+    setQtd(cartItemsIndex.length);
+  }, [cartItemsIndex]);
   return (
     <View style={styles.detailHeaderContainer}>
       {props.navigation.canGoBack() && (
@@ -176,6 +183,13 @@ function DetailHeader(props: NativeStackHeaderProps) {
             props.navigation.navigate("ShoppingCart");
           }}
         >
+          <Text
+            style={{
+              color: "white",
+            }}
+          >
+            {qtd}
+          </Text>
           <IconCart size={27} />
         </TouchableOpacity>
       </View>
