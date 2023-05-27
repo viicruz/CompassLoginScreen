@@ -37,7 +37,6 @@ export const styles = StyleSheet.create({
         fontSize: fontsize.text,
     },
     closeButton: {
-        marginTop: 20,
         alignSelf: "flex-end",
         width: '100%',
         height: '65%'

@@ -10,7 +10,7 @@ type Props = {
   placeholder?: string;
   onChange: (value: string) => void;
   isWrong: boolean;
-  wrongText: string;
+  wrongText: string | null;
 };
 export default function InputField(props: Props) {
   return (
