@@ -18,11 +18,13 @@ import SignUp from "../../screens/SignUp";
 import Home from "../../screens/Home";
 import ShoppingCart from "../../screens/ShoppingCart";
 
+
+
 import TabBar from "../../components/TabBar";
 import ProductDetailScreen from "../../screens/ProductDetailScreen/";
 import CartItemQuantity from "../../components/CartItemQuantity";
 
-import {IconArrow, IconCart} from "../../assets/icons"
+import {IconArrow, IconCart,} from "../../assets/icons"
 import { colors } from "../../constants/theme";
 
 const Stack = createNativeStackNavigator();
@@ -144,7 +146,7 @@ function HomeHeader(props: BottomTabHeaderProps) {
             props.navigation.navigate("ShoppingCart");
           }}
         >
-          <Cart size={27} />
+          <IconCart size={27} />
         </TouchableOpacity>
       </View>
     </View>
@@ -162,7 +164,7 @@ function DetailHeader(props: NativeStackHeaderProps) {
           style={{ marginLeft: 32 }}
         >
           <View >
-            <Arrow size={24} />
+            <IconArrow size={24} />
             
           </View>
         </TouchableOpacity>
@@ -173,7 +175,7 @@ function DetailHeader(props: NativeStackHeaderProps) {
             props.navigation.navigate("ShoppingCart");
           }}
         >
-          <Cart size={27} />
+          <IconCart size={27} />
         </TouchableOpacity>
       </View>
     </View>
