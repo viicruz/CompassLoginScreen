@@ -177,21 +177,21 @@ function DetailHeader(props: NativeStackHeaderProps) {
           </View>
         </TouchableOpacity>
       )}
-      <View>
+      <View style={styles.container}>
+      <View style={styles.wrap} >
         <TouchableOpacity
+        style={styles.cart}
+          
           onPress={() => {
             props.navigation.navigate("ShoppingCart");
           }}
         >
-          <Text
-            style={{
-              color: "white",
-            }}
-          >
+          <Text style={styles.textContainer}>
             {qtd}
           </Text>
           <IconCart size={27} />
         </TouchableOpacity>
+      </View>
       </View>
     </View>
   );
