@@ -14,7 +14,6 @@ function CartItems() {
 
   useEffect(() => {
     const filtered = getCartItems(cartItemsIndex, apiData);
-    console.log("something has change");
     setCarts(filtered);
     const total = getAmount(cartItemsIndex, apiData);
     updateAmount(total);
