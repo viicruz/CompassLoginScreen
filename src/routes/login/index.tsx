@@ -4,6 +4,8 @@ import {
   type NativeStackHeaderProps,
 } from "@react-navigation/native-stack";
 
+import { useContext, useEffect, useState } from "react";
+import { ProductDataContext } from "../../contexts/ProductProvider";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import styles from "./styles";
 import {
@@ -11,7 +13,6 @@ import {
   type BottomTabNavigationOptions,
   BottomTabHeaderProps,
 } from "@react-navigation/bottom-tabs";
-
 
 import Login from "../../screens/Login";
 import SignUp from "../../screens/SignUp";
@@ -22,7 +23,7 @@ import TabBar from "../../components/TabBar";
 import ProductDetailScreen from "../../screens/ProductDetailScreen/";
 import CartItemQuantity from "../../components/CartItemQuantity";
 
-import {IconArrow, IconCart} from "../../assets/icons"
+import { IconArrow, IconCart } from "../../assets/icons";
 import { colors } from "../../constants/theme";
 
 const Stack = createNativeStackNavigator();
@@ -72,7 +73,16 @@ export default function loginNavigation() {
         }}
       />
       <Stack.Screen name="Home" component={HomeTabStackNavigator} />
-      <Stack.Screen name="Detail" component={ProductDetailScreen} />
+      <Stack.Screen
+        name="Detail"
+        component={ProductDetailScreen}
+        options={{
+          header: (props) => {
+            return <DetailHeader {...props} />;
+          },
+          headerShown: true,
+        }}
+      />
     </Stack.Navigator>
   );
 }
@@ -142,6 +152,46 @@ function HomeHeader(props: BottomTabHeaderProps) {
             <IconCart size={30} />
           </View>
         </TouchableOpacity>
+      </View>
+    </View>
+  );
+}
+
+function DetailHeader(props: NativeStackHeaderProps) {
+  const { cartItemsIndex } = useContext(ProductDataContext);
+  const [qtd, setQtd] = useState(cartItemsIndex.length);
+  useEffect(() => {
+    setQtd(cartItemsIndex.length);
+  }, [cartItemsIndex]);
+  return (
+    <View style={styles.detailHeaderContainer}>
+      {props.navigation.canGoBack() && (
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.goBack();
+          }}
+          style={{ marginLeft: 32 }}
+        >
+          <View>
+            <IconArrow size={24} />
+          </View>
+        </TouchableOpacity>
+      )}
+      <View style={styles.container}>
+      <View style={styles.wrap} >
+        <TouchableOpacity
+        style={styles.cart}
+          
+          onPress={() => {
+            props.navigation.navigate("ShoppingCart");
+          }}
+        >
+          <Text style={styles.textContainer}>
+            {qtd}
+          </Text>
+          <IconCart size={27} />
+        </TouchableOpacity>
+      </View>
       </View>
     </View>
   );

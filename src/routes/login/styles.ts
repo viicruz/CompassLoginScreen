@@ -35,9 +35,33 @@ const styles = StyleSheet.create({
   },
   cart: {
     position: "absolute",
-    right: -20,
-    top: -20,
-    zIndex: 10,
+    right: -8,
+    top: -8,
+    zIndex: 2,
   },
-});
+
+  detailHeaderContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingTop: 40,
+    paddingRight: 25,
+    backgroundColor: colors.background,
+  },
+    container: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#20BE4C",
+      borderRadius: 99,
+      height: 16,
+      width: 16,
+    },
+  
+    textContainer: {
+      fontSize: 12,
+      textAlign: "center",
+      color: "white",
+      fontWeight: "bold",
+    },
+  });
 export default styles;
