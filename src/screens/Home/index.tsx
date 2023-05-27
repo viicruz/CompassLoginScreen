@@ -20,7 +20,9 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       await getProducts();
-      setIsloading(false);
+      setTimeout(() => {
+        setIsloading(false);
+      }, 1500);
     };
 
     fetchData();

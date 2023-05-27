@@ -57,7 +57,7 @@ export default function ProductDetailScreen({ route }: any) {
     setTimeout(() => {
       setModalVisible(true);
       setIsProductAdded(false);
-    }, 3000);
+    }, 1000);
   };
 
   const closeModal = () => {
