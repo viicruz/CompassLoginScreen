@@ -6,13 +6,12 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Footer from "../../components/Footer";
 
+import { UserCredential } from "../../types/types";
+
 import { styles } from "./styles";
 import Title from "../../components/Title";
 
-type UserCredential = {
-  email: string;
-  password: string;
-};
+
 export default function Login() {
   const navigation = useNavigation();
 

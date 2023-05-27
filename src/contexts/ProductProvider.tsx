@@ -1,18 +1,7 @@
 import { useState, createContext, ReactNode, SetStateAction } from "react";
 import { getDatas } from "../services/api";
 import { ProductType } from "../types/types";
-
-interface ApiProviderProps {
-  children: ReactNode;
-}
-
-interface ApiContextType {
-  updateProduct: (id: number, currentState: boolean) => void;
-  getProducts: () => void;
-  apiData: ProductType[];
-  cartItemsIndex: number[];
-  updateCart: (id: number[]) => void;
-}
+import { ApiProviderProps, ApiContextType } from "../types/types";
 
 export const ProductDataContext = createContext<ApiContextType>({
   apiData: [],

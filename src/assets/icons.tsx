@@ -1,14 +1,7 @@
 import { View } from "react-native";
 import { Svg, Path } from "react-native-svg";
 import { colors } from "../constants/theme";
-
-type Props = {
-    width?: number
-    height?: number
-    size?: number
-    color?: string;
-};
-
+import { Props } from "../types/types";
 
 const colorDefault = colors.primary
 

@@ -1,12 +1,6 @@
 import { TouchableOpacity, Text, ActivityIndicator } from "react-native";
 import { styles } from "./styles";
-
-type Props = {
-  label?: string;
-  disable?: boolean;
-  isLoading?: boolean;
-  onPress?: () => void;
-};
+import { Props } from "../../types/types";
 
 export default function ButtonBuyAdd({
   label = "button",

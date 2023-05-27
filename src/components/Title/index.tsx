@@ -1,10 +1,7 @@
 import { Text, View } from "react-native";
 
 import { styles } from "./styles";
-
-type Props = {
-    title: string
-}
+import { Props } from "../../types/types";
 
 export default function Title({title}: Props) {
     return (

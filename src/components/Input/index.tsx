@@ -3,16 +3,9 @@ import { View, TextInput, Text } from "react-native";
 import { IconMail, IconLock, IconUser } from "../../assets/icons";
 import { styles } from "./styles";
 import { colors } from "../../constants/theme";
+import { PropsInput } from "../../types/types";
 
-type Props = {
-  icon: "User" | "Mail" | "Lock";
-  secureTextEntry?: boolean;
-  placeholder?: string;
-  onChange: (value: string) => void;
-  isWrong: boolean;
-  wrongText: string;
-};
-export default function InputField(props: Props) {
+export default function InputField(props: PropsInput) {
   return (
     <View style={styles.wrapper}>
       <View

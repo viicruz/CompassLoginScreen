@@ -4,13 +4,12 @@ import styles from "./styles";
 import { colors } from "../../constants/theme";
 
 //Types
-import type { BottomTabBarProps } from "@react-navigation/bottom-tabs";
+import { PropTab } from "../../types/types";
 
 //icons
 import {IconHome, IconShop} from "../../assets/icons";
 
-interface Props extends BottomTabBarProps {}
-export default function TabBar(props: Props) {
+export default function TabBar(props: PropTab) {
   const position = props.state.index;
   return (
     <View style={styles.tabBarContainer}>

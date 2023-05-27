@@ -8,14 +8,10 @@ import Input from "../../components/Input";
 import Footer from "../../components/Footer";
 import Title from "../../components/Title";
 
+import { UserCredential } from "../../types/types";
+
 import { styles } from "./styles";
 
-
-type UserCredential = {
-  email: string;
-  password: string;
-  username: string;
-};
 
 export default function SignUp() {
   const [isChecked, setIsChecked] = useState<boolean>(false);

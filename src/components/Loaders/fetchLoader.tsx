@@ -1,10 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import Spinner from "react-native-loading-spinner-overlay";
-
-type fetchLoaderProps = {
-  isLoading: boolean;
-  setIsloading: Dispatch<SetStateAction<boolean>>;
-};
+import { fetchLoaderProps } from "../../types/types";
 
 function FetchLoader({ isLoading, setIsloading }: fetchLoaderProps) {
   return (

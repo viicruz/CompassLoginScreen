@@ -5,14 +5,9 @@ import { useNavigation } from "@react-navigation/native";
 import useKeyboardVisible from "../../Hooks/useKeyboardVisible";
 
 import { styles } from "./styles";
+import { PropsFooter } from "../../types/types";
 
-type Props = {
-  buttonName: string;
-  goTo: string;
-  textName: string;
-};
-
-export default function Footer(props: Props) {
+export default function Footer(props: PropsFooter) {
   const [wasClicked, setWasClicked] = useState<boolean>(false);
   const navigation = useNavigation();
   const isKeyboardVisible = useKeyboardVisible();
