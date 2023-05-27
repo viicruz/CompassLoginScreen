@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { View } from "react-native";
+import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import Button from "../../components/Button";
@@ -25,6 +25,8 @@ export default function Login() {
     email: false,
     password: false,
   });
+
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     setIsCredentialValid({
@@ -76,9 +78,14 @@ export default function Login() {
 
         <Button
           onPress={() => {
-            navigation.navigate("Home" as never);
+            setLoading(true);
+            setTimeout(() => {
+              setLoading(false);
+              navigation.navigate("Home" as never);
+            },3000)
           }}
-          name="Home"
+          isLoading={loading}
+          name="Login"
         />
       </View>
       <Footer
