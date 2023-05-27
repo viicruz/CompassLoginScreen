@@ -68,21 +68,14 @@ export default function Login() {
           placeholder="Your Password"
         />
 
-        {/* <Button
-          onPress={() => {
-            if (isCredentialValid.email && isCredentialValid.password)
-              navigation.navigate("Home" as never);
-          }}
-          name="login"
-        /> */}
-
         <Button
           onPress={() => {
             setLoading(true);
             setTimeout(() => {
               setLoading(false);
-              navigation.navigate("Home" as never);
-            },3000)
+              if (isCredentialValid.email && isCredentialValid.password)
+                navigation.navigate("Home" as never);
+            }, 3000);
           }}
           isLoading={loading}
           name="Login"
