@@ -10,15 +10,21 @@ import ModalComponent from "../../components/ModalComponent";
 
 export default function ShoppingCart() {
   const { cartItemsIndex } = useContext(ProductDataContext);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
   const openModal = () => {
-    setModalVisible(true); 
+    setLoading(true);
+    setTimeout(() => {
+      setModalVisible(true);
+      setLoading(true);
+    }, 2000);
   };
 
   const closeModal = () => {
     setModalVisible(false);
+    setLoading(false);
   };
 
   if (!cartItemsIndex.length) {
@@ -32,7 +38,7 @@ export default function ShoppingCart() {
     <View style={styles.container}>
       <CartItems />
       <View style={styles.buttonPlace}>
-        <ButtonBuyAdd label="buy" onPress={openModal} />
+        <ButtonBuyAdd label="buy" onPress={openModal} isLoading={loading} />
       </View>
       <ModalComponent
         visible={modalVisible}

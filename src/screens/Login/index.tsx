@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { View, ActivityIndicator } from "react-native";
+import { View, } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import Button from "../../components/Button";
