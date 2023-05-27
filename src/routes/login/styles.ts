@@ -35,9 +35,9 @@ const styles = StyleSheet.create({
   },
   cart: {
     position: "absolute",
-    right: -20,
-    top: -20,
-    zIndex: 10,
+    right: -8,
+    top: -8,
+    zIndex: 2,
   },
 
   detailHeaderContainer: {

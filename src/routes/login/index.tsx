@@ -4,7 +4,7 @@ import {
   type NativeStackHeaderProps,
 } from "@react-navigation/native-stack";
 
-import { View, Text, TouchableOpacity, StyleSheet,  } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import styles from "./styles";
 import {
   createBottomTabNavigator,
@@ -12,19 +12,16 @@ import {
   BottomTabHeaderProps,
 } from "@react-navigation/bottom-tabs";
 
-
 import Login from "../../screens/Login";
 import SignUp from "../../screens/SignUp";
 import Home from "../../screens/Home";
 import ShoppingCart from "../../screens/ShoppingCart";
 
-
-
 import TabBar from "../../components/TabBar";
 import ProductDetailScreen from "../../screens/ProductDetailScreen/";
 import CartItemQuantity from "../../components/CartItemQuantity";
 
-import {IconArrow, IconCart,} from "../../assets/icons"
+import { IconArrow, IconCart } from "../../assets/icons";
 import { colors } from "../../constants/theme";
 
 const Stack = createNativeStackNavigator();
@@ -146,7 +143,12 @@ function HomeHeader(props: BottomTabHeaderProps) {
             props.navigation.navigate("ShoppingCart");
           }}
         >
-          <IconCart size={27} />
+          <View style={styles.wrap}>
+            <View style={styles.cart}>
+              <CartItemQuantity />
+            </View>
+            <IconCart size={30} />
+          </View>
         </TouchableOpacity>
       </View>
     </View>
@@ -163,9 +165,8 @@ function DetailHeader(props: NativeStackHeaderProps) {
           }}
           style={{ marginLeft: 32 }}
         >
-          <View >
+          <View>
             <IconArrow size={24} />
-            
           </View>
         </TouchableOpacity>
       )}
