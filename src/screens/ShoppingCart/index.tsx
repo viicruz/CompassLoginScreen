@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import EmptyCart from "../../components/EmptyCart";
 import CartItems from "../../components/CartItems/CartItems";
@@ -7,6 +7,7 @@ import ButtonBuyAdd from "../../components/ButtonBuyAdd";
 import { ProductDataContext } from "../../contexts/ProductProvider";
 import { styles } from "./styles";
 import ModalComponent from "../../components/ModalComponent";
+import TotalAccount from "../../components/TotalAccount";
 
 export default function ShoppingCart() {
   const { cartItemsIndex } = useContext(ProductDataContext);
@@ -14,7 +15,7 @@ export default function ShoppingCart() {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
   const openModal = () => {
-    setModalVisible(true); 
+    setModalVisible(true);
   };
 
   const closeModal = () => {
@@ -28,9 +29,15 @@ export default function ShoppingCart() {
       </View>
     );
   }
+
   return (
     <View style={styles.container}>
-      <CartItems />
+      <View style={style.priceWrap}>
+        <TotalAccount />
+      </View>
+      <View>
+        <CartItems />
+      </View>
       <View style={styles.buttonPlace}>
         <ButtonBuyAdd label="buy" onPress={openModal} />
       </View>
@@ -43,3 +50,10 @@ export default function ShoppingCart() {
     </View>
   );
 }
+
+const style = StyleSheet.create({
+  priceWrap: {
+    width: "100%",
+    marginLeft: 40,
+  },
+});
