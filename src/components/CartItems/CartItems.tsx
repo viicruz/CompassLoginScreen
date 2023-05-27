@@ -5,35 +5,29 @@ import { ProductDataContext } from "../../contexts/ProductProvider";
 import { ProductType, productPropType } from "../../types/types";
 import CartItem from "./CartItem";
 import Line from "../Line";
+import { getAmout, getCartItems } from "../../util/util";
 
 function CartItems() {
-  const { cartItemsIndex, apiData } = useContext(ProductDataContext);
+  const { cartItemsIndex, apiData, updateAmount } =
+    useContext(ProductDataContext);
   const [carts, setCarts] = useState<ProductType[]>([]);
 
-  const getCartItems = () => {
-    let items: ProductType[] = [];
-    cartItemsIndex.map((id) => {
-      const item = apiData.filter((item) => item.id === id)[0];
-      items.push(item);
-    });
-
-    return items;
-  };
-
   useEffect(() => {
-    const filtered = getCartItems();
-    // console.log(`rerender ${cartItemsIndex}`);
+    const filtered = getCartItems(cartItemsIndex, apiData);
+    console.log("something has change");
     setCarts(filtered);
+    const total = getAmout(cartItemsIndex, apiData);
+    updateAmount(total);
   }, [cartItemsIndex]);
 
-  const renderItem = ({ item }: ListRenderItemInfo<productPropType>) => {
+  const renderItem = ({ item, index }: ListRenderItemInfo<productPropType>) => {
     return (
       <>
         <CartItem
           price={item.price}
           image={item.image}
           title={item.title}
-          id={item.id}
+          id={index}
           favorited={item.favorited}
         />
         <Line />

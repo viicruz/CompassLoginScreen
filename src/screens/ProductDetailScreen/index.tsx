@@ -1,11 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import {
-  Image,
-  Pressable,
-  Text,
-  View,
-  ScrollView,
-} from "react-native";
+import { Image, Pressable, Text, View, ScrollView } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import ButtonBuyAdd from "../../components/ButtonBuyAdd";
@@ -22,23 +16,20 @@ import { colors } from "../../constants/theme";
 import { styles } from "./styles";
 
 export default function ProductDetailScreen({ route }: any) {
-  const { apiData, updateCart, cartItemsIndex } =
+  const { apiData, updateCart, cartItemsIndex, updateProduct } =
     useContext(ProductDataContext);
   const [currentData, setCurrentData] = useState<ProductType>();
   const [quantity, setQuantity] = useState<number>(1);
-  const [cartId, setCartId] = useState<number>(-1);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [isFavorited, setIsFavorited] = useState<boolean>(false);
   const [isProductAdded, setIsProductAdded] = useState<boolean>(false);
-
   useEffect(() => {
     const param = route.params;
     const id: number = param.id;
-    setCartId(id);
     const result = apiData.filter((item) => item.id === id);
     setCurrentData(result[0]);
     setIsFavorited(result[0]?.favorited || false);
-  }, [cartItemsIndex]);
+  }, [cartItemsIndex, isFavorited]);
 
   const addQuantity = () => {
     setQuantity(quantity + 1);
@@ -52,8 +43,8 @@ export default function ProductDetailScreen({ route }: any) {
 
   const toggleFavorite = () => {
     setIsFavorited(!isFavorited);
+    updateProduct(currentData?.id as number, currentData?.favorited as boolean);
   };
-  
 
   const addCartHandler = () => {
     let quat: number[] = [];
@@ -66,7 +57,7 @@ export default function ProductDetailScreen({ route }: any) {
     setTimeout(() => {
       setModalVisible(true);
       setIsProductAdded(false);
-    }, 3000);
+    }, 1000);
   };
 
   const closeModal = () => {
