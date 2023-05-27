@@ -72,7 +72,16 @@ export default function loginNavigation() {
         }}
       />
       <Stack.Screen name="Home" component={HomeTabStackNavigator} />
-      <Stack.Screen name="Detail" component={ProductDetailScreen} />
+      <Stack.Screen
+        name="Detail"
+        component={ProductDetailScreen}
+        options={{
+          header: (props) => {
+            return <DetailHeader {...props} />;
+          },
+          headerShown: true,
+        }}
+      />
     </Stack.Navigator>
   );
 }
@@ -135,12 +144,36 @@ function HomeHeader(props: BottomTabHeaderProps) {
             props.navigation.navigate("ShoppingCart");
           }}
         >
-          <View style={styles.wrap}>
-            <View style={styles.cart}>
-              <CartItemQuantity />
-            </View>
-            <IconCart size={30} />
+          <Cart size={27} />
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+}
+
+function DetailHeader(props: NativeStackHeaderProps) {
+  return (
+    <View style={styles.detailHeaderContainer}>
+      {props.navigation.canGoBack() && (
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.goBack();
+          }}
+          style={{ marginLeft: 32 }}
+        >
+          <View >
+            <Arrow size={24} />
+            
           </View>
+        </TouchableOpacity>
+      )}
+      <View>
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate("ShoppingCart");
+          }}
+        >
+          <Cart size={27} />
         </TouchableOpacity>
       </View>
     </View>

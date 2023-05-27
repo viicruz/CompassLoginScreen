@@ -39,5 +39,13 @@ const styles = StyleSheet.create({
     top: -20,
     zIndex: 10,
   },
+
+  detailHeaderContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingTop: 40,
+    paddingRight: 25,
+    backgroundColor: colors.background,
+  },
 });
 export default styles;
