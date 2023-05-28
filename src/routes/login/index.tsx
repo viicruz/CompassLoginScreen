@@ -172,13 +172,13 @@ function DetailHeader(props: NativeStackHeaderProps) {
           }}
           style={{ marginLeft: 32 }}
         >
-          <View>
+          <View style={styles.arrow_cart}>
             <IconArrow size={24} />
           </View>
         </TouchableOpacity>
       )}
       <View>
-        <View style={styles.wrap}>
+        <View style={[styles.wrap, styles.arrow_cart]}>
           <TouchableOpacity
             style={styles.cart}
             onPress={() => {
