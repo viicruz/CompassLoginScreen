@@ -1,10 +1,10 @@
-import { EventHandler, useContext } from "react";
+import { useContext } from "react";
 import { Image, Pressable, Text, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 
 import { ProductDataContext } from "../../contexts/ProductProvider";
-import { ProductType, productPropType } from "../../types/types";
+import { productPropType } from "../../types/types";
 import { colors } from "../../constants/theme";
 import { styles } from "./styles";
 
@@ -36,7 +36,7 @@ export const ProductCard = ({
 
       <View>
         <Pressable onPress={productDetailView}>
-          <Image style={styles.itemImage} source={{ uri: image }} />
+          <Image resizeMode="contain" style={styles.itemImage} source={{ uri: image }} />
         </Pressable>
       </View>
       <View style={styles.itemPriceWrap}>

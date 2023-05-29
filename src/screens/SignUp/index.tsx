@@ -1,15 +1,14 @@
-import { useState, useEffect } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { Checkbox } from "expo-checkbox";
 
+import Checkbox from "../../components/Checkbox";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Footer from "../../components/Footer";
 import Title from "../../components/Title";
 
 import { styles } from "./styles";
-
 
 type UserCredential = {
   email: string;
@@ -19,7 +18,20 @@ type UserCredential = {
 
 export default function SignUp() {
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [isTermsAccepted, setIsTermsAccepted] = useState(false);
+
   const navigation = useNavigation();
+
+  const [inputErrors, setInputErrors] = useState<{
+    email: string | null;
+    password: string | null;
+    username: string | null;
+  }>({
+    email: null,
+    password: null,
+    username: null,
+  });
 
   const [userCredential, setUserCredential] = useState<UserCredential>({
     email: "",
@@ -33,28 +45,58 @@ export default function SignUp() {
     username: false,
   });
 
-  useEffect(() => {
-    setIsCredentialValid({
-      email: isEmailOk(userCredential.email),
-      password: isPasswordOk(userCredential.password),
-      username: isUsernameOk(userCredential.username),
-    });
-  }, [userCredential]);
+  const [isButtonPressed, setIsButtonPressed] = useState(false);
 
-  // //!debug
-  // useEffect(() => {
-  //   console.log(isCredentialValid);
-  // }, [isCredentialValid]);
+  useEffect(() => {
+    if (isButtonPressed) {
+      setInputErrors({
+        email: !userCredential.email
+          ? "Please enter a valid email address."
+          : null,
+        password: !userCredential.password
+          ? "Please enter a valid password."
+          : null,
+        username: !userCredential.username
+          ? "Please enter a valid username."
+          : null,
+      });
+    }
+  }, [isButtonPressed, userCredential]);
+
+  const validation = () => {
+    if (isCredentialValid.email) return false;
+
+    if (isCredentialValid.email) return false;
+
+    if (!isTermsAccepted) return false;
+
+    return true;
+  };
+
+  const handleButtonPress = () => {
+    setIsButtonPressed(true);
+
+    if (validation()) {
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+        navigation.navigate("Home" as never);
+      }, 100);
+    }
+  };
 
   return (
-    <View style={styles.signUpScreen}>
+    <View style={styles.container}>
       <Title title="Sign Up" />
-      <View style={styles.signUpForm}>
-        <View style={styles.inputHolder}>
+      <View style={styles.inputContainer}>
+        <View>
           <Input
-            //Must contain "@, ." and minimum of 5 characters.
-            isWrong={!isCredentialValid.email}
-            wrongText="Please enter a valid email address"
+            isWrong={
+              !isCredentialValid.email &&
+              isButtonPressed &&
+              !userCredential.email
+            }
+            wrongText={isButtonPressed ? inputErrors.email : ""}
             onChange={(e) => {
               setUserCredential({
                 ...userCredential,
@@ -66,9 +108,12 @@ export default function SignUp() {
           />
 
           <Input
-            //Minimum 3 characters.
-            isWrong={!isCredentialValid.username}
-            wrongText="Please enter a valid Username"
+            isWrong={
+              !isCredentialValid.username &&
+              isButtonPressed &&
+              !userCredential.username
+            }
+            wrongText={isButtonPressed ? inputErrors.username : ""}
             onChange={(e) => {
               setUserCredential({
                 ...userCredential,
@@ -80,9 +125,12 @@ export default function SignUp() {
           />
 
           <Input
-            //Minimum 6 characters and 1 letter.
-            isWrong={!isCredentialValid.password}
-            wrongText="Please enter a valid password"
+            isWrong={
+              !isCredentialValid.password &&
+              isButtonPressed &&
+              !userCredential.password
+            }
+            wrongText={isButtonPressed ? inputErrors.password : ""}
             onChange={(e) => {
               setUserCredential({
                 ...userCredential,
@@ -99,36 +147,31 @@ export default function SignUp() {
           <View style={styles.CheckBoxContainer}>
             <Checkbox
               value={isChecked}
-              onValueChange={setIsChecked}
-              style={!isChecked && { borderColor: "#FF4B4B" }}
+              onValueChange={(value) => {
+                setIsChecked(value);
+                setIsTermsAccepted(value);
+              }}
+              // style={!isChecked ? styles.textError : undefined}
             />
 
             <View style={styles.areaTerms}>
-              <Text style={{ color: "#f5f5f5" }}>Agree To</Text>
+              <Text style={styles.textTerms}>Agree To</Text>
               <TouchableOpacity>
-                <Text style={styles.textTerms}>Terms And Conditions</Text>
+                <Text style={styles.textTermsUnderline}>
+                  Terms And Conditions
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
 
-          {!isChecked && (
-            <Text
-              style={{ color: "#FF4B4B", marginLeft: 26 }}
-              children="Please accept the terms"
-            />
+          {!isChecked && !isTermsAccepted && isButtonPressed && (
+            <Text style={styles.textError}>Please accept the terms.</Text>
           )}
         </View>
 
         <Button
-          onPress={() => {
-            if (
-              isCredentialValid.email &&
-              isCredentialValid.password &&
-              isCredentialValid.username &&
-              isChecked
-            )
-              navigation.navigate("Home" as never);
-          }}
+          onPress={handleButtonPress}
+          isLoading={loading}
           name="create account"
         />
       </View>
@@ -140,31 +183,4 @@ export default function SignUp() {
       />
     </View>
   );
-}
-
-function isEmailOk(email: string): boolean {
-  let isOk = true;
-  if (email.length < 5) isOk = false;
-
-  if (!email.includes("@")) isOk = false;
-
-  if (!email.includes(".")) isOk = false;
-
-  return isOk;
-}
-
-function isPasswordOk(password: string): boolean {
-  const regexUpperCase = /[ A-Za-z]/;
-  const regexNumber = /[0-9]/;
-  let isPasswordOk = true;
-  if (password.length < 6) isPasswordOk = false;
-  if (!regexUpperCase.test(password)) isPasswordOk = false;
-  if (!regexNumber.test(password)) isPasswordOk = false;
-  return isPasswordOk;
-}
-
-function isUsernameOk(username: string): boolean {
-  let isUserOk = true;
-  if (username.length <= 2) isUserOk = false;
-  return isUserOk;
 }

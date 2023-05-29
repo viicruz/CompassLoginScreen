@@ -25,3 +25,12 @@ export type RootStackParamList = {
   Details: { itemId: number };
   Profile: { userId: string };
 };
+
+export type ModalProps = {
+  visible: boolean;
+  onClose: () => void;
+  title: string;
+  text: string;
+  button?: string;
+  onConfirm?: () => void;
+};

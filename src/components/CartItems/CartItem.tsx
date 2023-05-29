@@ -1,18 +1,38 @@
 import React from "react";
 import { productPropType } from "../../types/types";
-import { Text, View } from "react-native";
+import { Text, View, Image, ScrollView } from "react-native";
+import Delete from "./Delete";
+import { styles } from "./styles";
 
-function CartItem({ price, title, image, id, favorited }: productPropType) {
+function CartItem({
+  price,
+  title,
+  image,
+  id,
+  favorited: favorited,
+}: productPropType) {
   return (
-    <View>
+    <View style={styles.cardBox}>
       <View>
-        <Text>Image</Text>
+        <Image
+          resizeMode="contain"
+          source={{ uri: image }}
+          style={styles.image}
+        />
       </View>
 
-      <View>
-        <Text>{title}</Text>
-        <Text>{price}</Text>
+      <View style={styles.detailsContainer}>
+        <ScrollView>
+          <Text style={styles.fonts}>{title}</Text>
+        </ScrollView>
+
+        <View style={styles.priceBox}>
+          <Text style={styles.priceProd}>{`R$ ${price
+            .toFixed(2)
+            .replace(".", ",")}`}</Text>
+        </View>
       </View>
+      <Delete index={id} />
     </View>
   );
 }

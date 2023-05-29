@@ -7,11 +7,11 @@ import {
   StyleSheet,
 } from "react-native";
 
+import FetchLoader from "../../components/Loaders/fetchLoader";
 import { ProductCard } from "../../components/ProductCard";
 import { ProductDataContext } from "../../contexts/ProductProvider";
 import { productPropType } from "../../types/types";
 import { styles } from "./styles";
-import FetchLoader from "../../components/Loaders/fetchLoader";
 
 export default function Home() {
   const { apiData, getProducts } = useContext(ProductDataContext);
@@ -20,11 +20,10 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       await getProducts();
-      setIsloading(false);
+      setTimeout(() => {
+        setIsloading(false);
+      }, 1500);
     };
-    // setTimeout(() => {
-    //   setIsloading(false);
-    // }, 5000);
 
     fetchData();
   }, []);
@@ -56,8 +55,8 @@ export default function Home() {
           data={apiData}
           numColumns={2}
           ItemSeparatorComponent={() => <View style={{ height: 10, gap: 5 }} />}
-          keyExtractor={(item) => {
-            return item.id + "aa";
+          keyExtractor={(item, index) => {
+            return `${item.id + index}`;
           }}
           renderItem={itemRenderer}
         ></FlatList>

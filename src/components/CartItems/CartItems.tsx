@@ -1,45 +1,49 @@
 import React, { useContext, useEffect, useState } from "react";
+import { FlatList, ListRenderItemInfo, View } from "react-native";
+
 import { ProductDataContext } from "../../contexts/ProductProvider";
 import { ProductType, productPropType } from "../../types/types";
-import { FlatList, ListRenderItemInfo, View } from "react-native";
 import CartItem from "./CartItem";
+import Line from "../Line";
+import { getAmount, getCartItems } from "../../util/util";
+
+import { styles } from "./styles";
+
 
 function CartItems() {
-  const { cartItemsIndex, apiData } = useContext(ProductDataContext);
+  const { cartItemsIndex, apiData, updateAmount } =
+    useContext(ProductDataContext);
   const [carts, setCarts] = useState<ProductType[]>([]);
 
-  const getCartItems = () => {
-    let items: ProductType[] = [];
-    cartItemsIndex.map((id) => {
-      const item = apiData.filter((item) => item.id === id)[0];
-      items.push(item);
-    });
-
-    return items;
-  };
-
   useEffect(() => {
-    const filtred = getCartItems();
+    const filtered = getCartItems(cartItemsIndex, apiData);
+    setCarts(filtered);
+    const total = getAmount(cartItemsIndex, apiData);
+    updateAmount(total);
+  }, [cartItemsIndex]);
 
-    setCarts(filtred);
-  }, []);
-
-  const renderItem = ({ item }: ListRenderItemInfo<productPropType>) => {
+  const renderItem = ({ item, index }: ListRenderItemInfo<productPropType>) => {
     return (
-      <CartItem
-        price={item.price}
-        image={item.image}
-        title={item.title}
-        id={item.id}
-        favorited={item.favorited}
-      />
+      <>
+        <CartItem
+          price={item.price}
+          image={item.image}
+          title={item.title}
+          id={index}
+          favorited={item.favorited}
+        />
+        <Line />
+      </>
     );
   };
+
   return (
-    <View>
+    <View style={styles.containerCartItems}>
       <FlatList
         data={carts}
-        keyExtractor={(item) => item.id + "aa"}
+        keyExtractor={(item, index) =>
+          `${item.id + Math.random() + item.title}`
+        }
         renderItem={renderItem}
       ></FlatList>
     </View>

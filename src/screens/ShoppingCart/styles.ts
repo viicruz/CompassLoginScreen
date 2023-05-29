@@ -1,29 +1,22 @@
 import { StyleSheet } from "react-native";
-import { colors } from "../../constants/theme";
+import { colors, windowHeight } from "../../constants/theme";
 
 export const styles = StyleSheet.create({
     container: {
-        height: '100%',
+        flex: 1,
+        paddingTop: 50,
+        paddingHorizontal: 10,
+        justifyContent: 'space-around',
         alignItems: 'center',
-        backgroundColor: colors.background,
-        
-    },
-    containerArea: {
-        // display: "none",
-        marginVertical: 150,   
-    },
-    warning: {
-        fontSize: 32,
-        fontWeight: '600',
-        color: colors.light,
-    },
-    text: {
-        fontSize: 20,
-        color: colors.light,
-        textAlign: 'center',
+        backgroundColor: colors.background, 
     },
     buttonPlace: {
-        position: "absolute",
-        bottom: 35,
-    }
+        alignSelf: 'center',
+        bottom: 10,
+        marginBottom: 20,
+    },
+    priceWrap: {
+        width: "100%",
+        marginLeft: 30,
+    },
 })

@@ -6,13 +6,15 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Footer from "../../components/Footer";
 
-import { styles } from "./styles";
+// Styles same as SignUp screen
+import { styles } from "../SignUp/styles";
 import Title from "../../components/Title";
 
 type UserCredential = {
   email: string;
   password: string;
 };
+
 export default function Login() {
   const navigation = useNavigation();
 
@@ -26,6 +28,9 @@ export default function Login() {
     password: false,
   });
 
+  const [loading, setLoading] = useState<boolean>(false);
+  const [isButtonPressed, setIsButtonPressed] = useState<boolean>(false);
+
   useEffect(() => {
     setIsCredentialValid({
       email: isEmailOk(userCredential.email),
@@ -33,18 +38,24 @@ export default function Login() {
     });
   }, [userCredential]);
 
-  // //!debug
-  // useEffect(() => {
-  //   console.log(isCredentialValid);
-  // }, [isCredentialValid]);
+  const handleButtonPress = () => {
+    setIsButtonPressed(true);
+
+    if (isCredentialValid.email && isCredentialValid.password) {
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+        navigation.navigate("Home" as never);
+      }, 3000);
+    }
+  };
 
   return (
     <View style={styles.container}>
       <Title title="Welcome" />
       <View style={styles.inputContainer}>
         <Input
-          //Must contain "@, ." and minimum of 5 characters.
-          isWrong={!isCredentialValid.email}
+          isWrong={!isCredentialValid.email && isButtonPressed}
           wrongText="Please enter a valid email address"
           onChange={(e) => {
             setUserCredential({
@@ -57,8 +68,7 @@ export default function Login() {
         />
 
         <Input
-          //Minimum 6 characters and 1 letter.
-          isWrong={!isCredentialValid.password}
+          isWrong={!isCredentialValid.password && isButtonPressed}
           wrongText="Please enter a valid password"
           onChange={(e) => {
             setUserCredential({
@@ -72,20 +82,10 @@ export default function Login() {
         />
 
         <Button
-          onPress={() => {
-            if (isCredentialValid.email && isCredentialValid.password)
-              navigation.navigate("Home" as never);
-          }}
-          name="login"
+          onPress={handleButtonPress}
+          isLoading={loading}
+          name="Login"
         />
-
-        {/* <Button
-          onPress={() => {
-            navigation.navigate("Home" as never);
-            
-          }}
-          name="Home"
-        /> */}
       </View>
       <Footer
         goTo="SignUp"
@@ -110,9 +110,9 @@ function isEmailOk(email: string): boolean {
 function isPasswordOk(password: string): boolean {
   const regexUpperCase = /[ A-Za-z]/;
   const regexNumber = /[0-9]/;
-  let isPassordOk = true;
-  if (password.length < 6) isPassordOk = false;
-  if (!regexUpperCase.test(password)) isPassordOk = false;
-  if (!regexNumber.test(password)) isPassordOk = false;
-  return isPassordOk;
+  let isPasswordOk = true;
+  if (password.length < 6) isPasswordOk = false;
+  if (!regexUpperCase.test(password)) isPasswordOk = false;
+  if (!regexNumber.test(password)) isPasswordOk = false;
+  return isPasswordOk;
 }
