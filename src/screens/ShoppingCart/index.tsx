@@ -10,7 +10,7 @@ import ModalComponent from "../../components/ModalComponent";
 import TotalAccount from "../../components/TotalAccount";
 
 export default function ShoppingCart() {
-  const { cartItemsIndex } = useContext(ProductDataContext);
+  const { cartItemsIndex, clearCartItems } = useContext(ProductDataContext);
 
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [isProductPurchased, SetIsProductPurchased] = useState<boolean>(false);
@@ -20,6 +20,7 @@ export default function ShoppingCart() {
     setTimeout(() => {
       setModalVisible(true);
       SetIsProductPurchased(false)
+      clearCartItems();
     }, 500);
   };
 
