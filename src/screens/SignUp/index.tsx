@@ -50,27 +50,46 @@ export default function SignUp() {
   useEffect(() => {
     if (isButtonPressed) {
       setInputErrors({
-        email: !userCredential.email ? "Please enter a valid email address." : null,
-        password: !userCredential.password ? "Please enter a valid password." : null,
-        username: !userCredential.username ? "Please enter a valid username." : null,
+        email: !userCredential.email
+          ? "Please enter a valid email address."
+          : null,
+        password: !userCredential.password
+          ? "Please enter a valid password."
+          : null,
+        username: !userCredential.username
+          ? "Please enter a valid username."
+          : null,
       });
     }
   }, [isButtonPressed, userCredential]);
 
+  const validation = () => {
+    if (isCredentialValid.email) return false;
+
+    if (isCredentialValid.email) return false;
+
+    if (!isTermsAccepted) return false;
+
+    return true;
+  };
+
   const handleButtonPress = () => {
     setIsButtonPressed(true);
 
-    if (
-      isCredentialValid.email &&
-      isCredentialValid.password &&
-      isCredentialValid.username &&
-      isTermsAccepted
-    ) {
+    if (validation()) {
+      console.log("credencial valido");
       setLoading(true);
       setTimeout(() => {
         setLoading(false);
         navigation.navigate("Home" as never);
-      }, 3000);
+      }, 100);
+    } else {
+      console.log("credencial invalido");
+      console.log(
+        userCredential.email,
+        userCredential.password,
+        userCredential.username
+      );
     }
   };
 
@@ -80,7 +99,11 @@ export default function SignUp() {
       <View style={styles.inputContainer}>
         <View>
           <Input
-            isWrong={!isCredentialValid.email && (isButtonPressed && !userCredential.email)}
+            isWrong={
+              !isCredentialValid.email &&
+              isButtonPressed &&
+              !userCredential.email
+            }
             wrongText={isButtonPressed ? inputErrors.email : ""}
             onChange={(e) => {
               setUserCredential({
@@ -93,7 +116,11 @@ export default function SignUp() {
           />
 
           <Input
-            isWrong={!isCredentialValid.username && (isButtonPressed && !userCredential.username)}
+            isWrong={
+              !isCredentialValid.username &&
+              isButtonPressed &&
+              !userCredential.username
+            }
             wrongText={isButtonPressed ? inputErrors.username : ""}
             onChange={(e) => {
               setUserCredential({
@@ -106,7 +133,11 @@ export default function SignUp() {
           />
 
           <Input
-            isWrong={!isCredentialValid.password && (isButtonPressed && !userCredential.password)}
+            isWrong={
+              !isCredentialValid.password &&
+              isButtonPressed &&
+              !userCredential.password
+            }
             wrongText={isButtonPressed ? inputErrors.password : ""}
             onChange={(e) => {
               setUserCredential({
@@ -134,7 +165,9 @@ export default function SignUp() {
             <View style={styles.areaTerms}>
               <Text style={styles.textTerms}>Agree To</Text>
               <TouchableOpacity>
-                <Text style={styles.textTermsUnderline}>Terms And Conditions</Text>
+                <Text style={styles.textTermsUnderline}>
+                  Terms And Conditions
+                </Text>
               </TouchableOpacity>
             </View>
           </View>

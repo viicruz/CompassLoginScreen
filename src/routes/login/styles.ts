@@ -47,21 +47,25 @@ const styles = StyleSheet.create({
     paddingRight: 25,
     backgroundColor: colors.background,
   },
-    container: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: "#20BE4C",
-      borderRadius: 99,
-      height: 16,
-      width: 16,
-    },
-  
-    textContainer: {
-      fontSize: 12,
-      textAlign: "center",
-      color: "white",
-      fontWeight: "bold",
-    },
-  });
+  container: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#20BE4C",
+    borderRadius: 99,
+    height: 16,
+    width: 16,
+  },
+
+  textContainer: {
+    fontSize: 12,
+    textAlign: "center",
+    color: "white",
+    fontWeight: "bold",
+  },
+
+  arrow_cart: {
+    marginTop: 20,
+  },
+});
 export default styles;
