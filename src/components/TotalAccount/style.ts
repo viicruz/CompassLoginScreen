@@ -1,19 +1,19 @@
 import { StyleSheet } from "react-native";
+import { colors } from "../../constants/theme";
 const style = StyleSheet.create({
   container: {
     marginTop: 70,
     marginBottom: 150,
-    // backgroundColor: "red",
   },
 
   totalText: {
-    color: "white",
+    color: colors.light,
     fontSize: 20,
     fontWeight: "bold",
   },
 
-  acount: {
-    color: "white",
+  account: {
+    color: colors.primary,
     fontSize: 32,
     fontWeight: "500",
   },

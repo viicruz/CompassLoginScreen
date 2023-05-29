@@ -12,7 +12,7 @@ function TotalAccount() {
         <Text style={style.totalText}>TOTAL </Text>
       </View>
       <View>
-        <Text style={style.acount}>{`R$ ${totalAmount
+        <Text style={style.account}>{`R$ ${totalAmount
           .toFixed(2)
           .replace(".", ",")}`}</Text>
       </View>
