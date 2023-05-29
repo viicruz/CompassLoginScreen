@@ -7,6 +7,9 @@ import CartItem from "./CartItem";
 import Line from "../Line";
 import { getAmount, getCartItems } from "../../util/util";
 
+import { styles } from "./styles";
+
+
 function CartItems() {
   const { cartItemsIndex, apiData, updateAmount } =
     useContext(ProductDataContext);
@@ -35,7 +38,7 @@ function CartItems() {
   };
 
   return (
-    <View>
+    <View style={styles.containerCartItems}>
       <FlatList
         data={carts}
         keyExtractor={(item, index) =>

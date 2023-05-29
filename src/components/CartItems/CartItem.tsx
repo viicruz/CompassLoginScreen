@@ -1,6 +1,6 @@
 import React from "react";
 import { productPropType } from "../../types/types";
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, ScrollView } from "react-native";
 import Delete from "./Delete";
 import { styles } from "./styles";
 
@@ -22,7 +22,9 @@ function CartItem({
       </View>
 
       <View style={styles.detailsContainer}>
-        <Text style={styles.fonts}>{title}</Text>
+        <ScrollView>
+          <Text style={styles.fonts}>{title}</Text>
+        </ScrollView>
 
         <View style={styles.priceBox}>
           <Text style={styles.priceProd}>{`R$ ${price
