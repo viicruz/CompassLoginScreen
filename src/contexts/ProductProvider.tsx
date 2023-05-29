@@ -1,7 +1,7 @@
 import { useState, createContext, ReactNode, SetStateAction } from "react";
 import { getDatas } from "../services/api";
 import { ProductType } from "../types/types";
-import { getAmout, getCartItems, getCurrentProduct } from "../util/util";
+import { getCartItems, getCurrentProduct } from "../util/util";
 
 interface ApiProviderProps {
   children: ReactNode;
@@ -12,6 +12,7 @@ interface ApiContextType {
   getProducts: () => void;
   apiData: ProductType[];
   cartItemsIndex: number[];
+  clearCartItems: () => void;
   updateCart: (id: number[]) => void;
   removeCartItem: (id: number) => void;
   totalAmount: number;
@@ -24,6 +25,7 @@ export const ProductDataContext = createContext<ApiContextType>({
   updateProduct: async (id: number, currentState: boolean) => {},
   updateCart: async (id: number[]) => {},
   cartItemsIndex: [],
+  clearCartItems: () => {},
   removeCartItem: () => {},
   totalAmount: 0,
   updateAmount: () => {},
@@ -70,11 +72,16 @@ export default function ProductProvider({ children }: ApiProviderProps) {
     });
   };
 
+  const clearCartItems = ()=>{
+    setCartItemsIndex([]);
+  }
+
   const values = {
     updateProduct,
     apiData,
     getProducts,
     cartItemsIndex,
+    clearCartItems,
     updateCart,
     removeCartItem,
     totalAmount,

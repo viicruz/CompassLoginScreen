@@ -10,7 +10,7 @@ import ModalComponent from "../../components/ModalComponent";
 import TotalAccount from "../../components/TotalAccount";
 
 export default function ShoppingCart() {
-  const { cartItemsIndex } = useContext(ProductDataContext);
+  const { cartItemsIndex, clearCartItems } = useContext(ProductDataContext);
 
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [isProductPurchased, SetIsProductPurchased] = useState<boolean>(false);
@@ -47,6 +47,7 @@ export default function ShoppingCart() {
         <ButtonBuyAdd label="buy" onPress={openModal} isLoading={isProductPurchased}/>
       </View>
       <ModalComponent
+        onConfirm={clearCartItems}
         visible={modalVisible}
         onClose={closeModal}
         title="Good!"

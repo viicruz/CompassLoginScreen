@@ -27,9 +27,10 @@ export type RootStackParamList = {
 };
 
 export type ModalProps = {
-  visible: boolean
+  visible: boolean;
   onClose: () => void;
   title: string;
   text: string;
-  button?: string
-}
+  button?: string;
+  onConfirm?: () => void;
+};
