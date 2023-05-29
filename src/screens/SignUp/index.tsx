@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { Checkbox } from "expo-checkbox";
 
+import Checkbox from "../../components/Checkbox";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Footer from "../../components/Footer";
@@ -77,19 +77,11 @@ export default function SignUp() {
     setIsButtonPressed(true);
 
     if (validation()) {
-      console.log("credencial valido");
       setLoading(true);
       setTimeout(() => {
         setLoading(false);
         navigation.navigate("Home" as never);
       }, 100);
-    } else {
-      console.log("credencial invalido");
-      console.log(
-        userCredential.email,
-        userCredential.password,
-        userCredential.username
-      );
     }
   };
 
@@ -159,7 +151,7 @@ export default function SignUp() {
                 setIsChecked(value);
                 setIsTermsAccepted(value);
               }}
-              style={!isChecked ? styles.textError : undefined}
+              // style={!isChecked ? styles.textError : undefined}
             />
 
             <View style={styles.areaTerms}>
