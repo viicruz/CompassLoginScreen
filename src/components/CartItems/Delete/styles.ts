@@ -12,6 +12,6 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         position: 'absolute',
         bottom: 40,
-        right: -16
+        right: -26
     },
 });

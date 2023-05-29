@@ -37,14 +37,14 @@ export default function ShoppingCart() {
 
   return (
     <View style={styles.container}>
-      <View style={style.priceWrap}>
+      <View style={styles.priceWrap}>
         <TotalAccount />
       </View>
       <View>
         <CartItems />
-      </View>
-      <View style={styles.buttonPlace}>
-        <ButtonBuyAdd label="buy" onPress={openModal} isLoading={isProductPurchased}/>
+        <View style={styles.buttonPlace}>
+          <ButtonBuyAdd label="buy" onPress={openModal} isLoading={isProductPurchased} />
+        </View>
       </View>
       <ModalComponent
         onConfirm={clearCartItems}
@@ -57,9 +57,3 @@ export default function ShoppingCart() {
   );
 }
 
-const style = StyleSheet.create({
-  priceWrap: {
-    width: "100%",
-    marginLeft: 40,
-  },
-});

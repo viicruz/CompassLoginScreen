@@ -11,7 +11,12 @@ export const styles = StyleSheet.create({
         backgroundColor: colors.background, 
     },
     buttonPlace: {
-        position: "absolute",
+        alignSelf: 'center',
         bottom: 10,
-    } 
+        marginBottom: 20,
+    },
+    priceWrap: {
+        width: "100%",
+        marginLeft: 30,
+    },
 })

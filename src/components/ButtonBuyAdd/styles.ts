@@ -4,7 +4,7 @@ import { colors } from "../../constants/theme";
 
 export const styles = StyleSheet.create({
     container: {
-        marginBottom: 40,
+        marginBottom: 45,
         backgroundColor: colors.buyAdd,
         width: 260,
         height: 56,

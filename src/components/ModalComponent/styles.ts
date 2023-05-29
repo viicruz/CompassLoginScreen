@@ -7,7 +7,8 @@ export const styles = StyleSheet.create({
     modalContainer: {
         position: "absolute",
         width: windowWidth,
-        height: windowHeight,
+        minHeight: windowHeight,
+        height: '100%',
         justifyContent: "center",
         alignItems: "center",
         alignSelf: 'center',

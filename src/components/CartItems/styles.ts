@@ -17,8 +17,9 @@ export const styles = StyleSheet.create({
     },
 
     detailsContainer: {
+        justifyContent: 'space-between',
         flex: 2,
-        marginLeft: 20,
+        marginHorizontal: 15,
     },
 
     priceBox: {
@@ -26,8 +27,8 @@ export const styles = StyleSheet.create({
         height: 43,
         backgroundColor: colors.background,
         marginTop: 10,
-        padding: 8,
         alignItems: 'center',
+        justifyContent: 'center',
         borderRadius: 6,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
@@ -63,4 +64,7 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         paddingBottom: 5,
     },
+    containerCartItems: {
+        flex: 1,
+    }
 });
