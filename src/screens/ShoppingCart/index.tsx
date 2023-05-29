@@ -20,7 +20,6 @@ export default function ShoppingCart() {
     setTimeout(() => {
       setModalVisible(true);
       SetIsProductPurchased(false)
-      clearCartItems();
     }, 500);
   };
 
@@ -48,6 +47,7 @@ export default function ShoppingCart() {
         <ButtonBuyAdd label="buy" onPress={openModal} isLoading={isProductPurchased}/>
       </View>
       <ModalComponent
+        onConfirm={clearCartItems}
         visible={modalVisible}
         onClose={closeModal}
         title="Good!"
